@@ -40,8 +40,7 @@ class LoginController
             $this->login_failed();
             return;
         }
-		//$user = $ss->getUserByName($_POST["username"]);
-        $user = User::where('username', $_POST["username"])[0];
+        $user = User::where('email', $_POST["email"])[0];
 
         if( $user === null )
         {
@@ -74,7 +73,7 @@ class LoginController
     public function signup()
     {
         // Provjeri sastoji li se ime samo od slova; ako ne, crtaj login formu.
-        if( !isset( $_POST["username"] ) || preg_match( '/[a-zA-Z]{1, 20}/', $_POST["username"] ) )
+        if( !isset( $_POST["email"] ) /*|| preg_match( '/[a-zA-Z]{1, 20}/', $_POST["username"] )*/ )
         {
             $this->login_failed();
             return;
@@ -88,16 +87,7 @@ class LoginController
         }
 
         // Sve je OK, provjeri jel ga ima u bazi.
-        $db = DB::getConnection();
-
-        try
-        {
-            $st = $db->prepare( 'SELECT password_hash FROM dz2_users WHERE username=:username' );
-            $st->execute( array( 'username' => $_POST["username"] ) );
-        }	
-        catch( PDOException $e ) { $this->login_failed( 'Greška:' . $e->getMessage() ); return; }
-
-        if( $st->rowCount() > 0 )
+        if( User::where('email', $_POST["email"] ) )
         {
             // Taj korisnik već postoji. Ponovno crtaj login.
             $this->login_failed( 'Taj korisnik već postoji.' );
@@ -105,22 +95,49 @@ class LoginController
         }
         else
         {
+            //Prvo mu generiraj random string od 20 znakova za registracijski link.
+            $reg_seq = '';
+		    for( $i = 0; $i < 20; ++$i )
+			    $reg_seq .= chr( rand(0, 25) + ord( 'a' ) );
             // Stvarno nema tog korisnika. Dodaj ga u bazu.
-            try
-            {
-                // Prvo pripremi insert naredbu.
-                $st = $db->prepare( 'INSERT INTO dz2_users(username, password_hash, email, registration_sequence, has_registered) VALUES (:username, :password_hash, \'a@b.com\', \'abc\', \'1\')' );
+            $user = new User();
+            $user->name = $_POST["name"];
+            $user->surname = $_POST["surname"];
+            $user->email = $_POST["email"];
+            $user->password_hash = password_hash( $_POST['password' ], PASSWORD_DEFAULT );
+            $user->has_registered = 0;
+            $user->registration_sequence = $reg_seq;
+            $user->type = "owner";
+            $user->save();
 
-                // Napravi hash od passworda kojeg je unio user.
-                $hash = password_hash( $_POST["password"], PASSWORD_DEFAULT );
+            // Sad mu još pošalji mail
+		    $to       = $_POST['email'];
+		    $subject  = 'Registration mail';
+		    $message  = 'For validation click this: ';
+		    $message .= 'http://' . $_SERVER['SERVER_NAME'] . htmlentities( dirname( $_SERVER['PHP_SELF'] ) ) . '/ebuy.php?rt=login/veryfy&registration_sequence=' . $reg_seq . 
+            '&email=' . $_POST["email"] ."\n";
+            $headers  = 'From: rp2@studenti.math.hr' . "\r\n" .
+		            'Reply-To: rp2@studenti.math.hr' . "\r\n" .
+		            'X-Mailer: PHP/' . phpversion();
 
-                // Izvrši sad tu insert naredbu. Uočite da u bazu stavljamo hash, a ne $_POST["password"]!
-                $st->execute( array( 'username' => $_POST["username"], 'password_hash' => $hash ) );
-            }
-            catch( PDOException $e ) { $this->login_failed( 'Greška:' . $e->getMessage() ); return; }
+		    $isOK = mail($to, $subject, $message, $headers);
+
+		    if( !$isOK )
+			    exit( 'Greška: ne mogu poslati mail. (Pokrenite na rp2 serveru.)' );
 
             // Sad ponovno nacrtaj login formu, tako da se user proba ulogirati.
             $this->login_failed( 'Novi korisnik je uspješno dodan!' );//treba promjeniti
+        }
+    }
+
+    public function verify()
+    {
+        if(!isset( $_POST["email"] ) || !isset( $_POST["registration_sequence"] ))
+            exit;
+        $user=User::where("email", $_GET["email"])[0];
+        if($user->registration_sequence === $_GET["registration_sequence"]){
+            $user->has_registered = 1;
+            $user->save();
         }
     }
 
