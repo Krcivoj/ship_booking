@@ -10,12 +10,14 @@ class LoginController
     {
 		$title = 'login';
 		$message = '';
-    if( isset( $_POST["gumb" ] ) && $_POST["gumb"] === "login" )
-        $this->login();
-    else if( isset( $_POST["gumb" ] ) && $_POST["gumb"] === "novi" )
-        $this->signup();
-    else
-        require_once __DIR__ . '/../view/login.php';
+        if( isset( $_POST["gumb" ] ) && $_POST["gumb"] === "login" )
+            $this->login();
+        else if( isset( $_POST["gumb" ] ) && $_POST["gumb"] === "novi" ){
+            header( 'Location: index.php?rt=signup' );
+            return;
+        }
+        else
+            require_once __DIR__ . '/../view/login.php';
 
     }
 
@@ -29,17 +31,20 @@ class LoginController
     public function login()
     {
         // Provjeri sastoji li se ime samo od slova; ako ne, crtaj login formu.
-        if( !isset( $_POST["username"] ) || preg_match( '/[a-zA-Z]{1, 20}/', $_POST["username"] ) )
-        {
-            $this->login_failed();
+        if( !isset($_POST['email']) || !filter_var( $_POST['email'], FILTER_VALIDATE_EMAIL) )
+	    {
+		    $this->message = "Email is not valid!";
+            $this->login_failed("Email is not valid!");
             return;
-        }
+	    }
+
 
         // Možda se ne šalje password; u njemu smije biti bilo što.
         if( !isset( $_POST["password"] ) ){
-            $this->login_failed();
+            $this->login_failed("Password is empty!");
             return;
         }
+
         $user = User::where('email', $_POST["email"])[0];
 
         if( $user === null )
@@ -57,7 +62,7 @@ class LoginController
             {
                 // Dobar je. Ulogiraj ga.
                 $_SESSION['user'] = serialize($user);
-                header( 'Location: index.php?rt=user' );
+                header( 'Location: index.php?rt=user' );  //TODO
                 return;
             }
             else
@@ -114,7 +119,7 @@ class LoginController
 		    $to       = $_POST['email'];
 		    $subject  = 'Registration mail';
 		    $message  = 'For validation click this: ';
-		    $message .= 'http://' . $_SERVER['SERVER_NAME'] . htmlentities( dirname( $_SERVER['PHP_SELF'] ) ) . '/ebuy.php?rt=login/veryfy&registration_sequence=' . $reg_seq . 
+		    $message .= 'http://' . $_SERVER['SERVER_NAME'] . htmlentities( dirname( $_SERVER['PHP_SELF'] ) ) . '/index.php?rt=login/verify&registration_sequence=' . $reg_seq . 
             '&email=' . $_POST["email"] ."\n";
             $headers  = 'From: rp2@studenti.math.hr' . "\r\n" .
 		            'Reply-To: rp2@studenti.math.hr' . "\r\n" .
@@ -132,10 +137,11 @@ class LoginController
 
     public function verify()
     {
-        if(!isset( $_POST["email"] ) || !isset( $_POST["registration_sequence"] ))
-            exit;
+        if(!isset( $_GET["email"] ) || !isset( $_GET["registration_sequence"] ))
+            echo "Nesto nije u redu";
         $user=User::where("email", $_GET["email"])[0];
         if($user->registration_sequence === $_GET["registration_sequence"]){
+            echo "mjenjam bool";
             $user->has_registered = 1;
             $user->save();
         }
@@ -147,7 +153,6 @@ class LoginController
         session_destroy();
         header( 'Location: index.php?rt=login/index' );
     }
-
 };
 
 ?>
