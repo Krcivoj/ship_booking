@@ -158,10 +158,9 @@ class AuthenticationController extends BaseController
             // Sad mu jos posalji mail
 		    $to       = $_POST['email'];
 		    $subject  = 'Molimo potvrdite prijavu';
-		    $message  = 'Poštovani/a' . $user->name .' '. $user->surname ."\n\n";
-            $message .= 'Dobrodošli i hvala što ste se prijavili. Kako bi dovršili proces prijave molimo Vas da 
-            potvrditr primitak ovog e-maila klikom na link: ';
-		    $message .= 'http://' . __SITE_URL . '/index.php?rt=authentication/verify&registration_sequence=' . $reg_seq . 
+		    $message  = 'Poštovani/a ' . $user->name .' '. $user->surname .",\n\n";
+            $message .= 'Dobrodošli i hvala što ste se prijavili. Kako bi dovršili proces prijave molimo Vas da potvrdite primitak ovog e-maila klikom na link: ';
+		    $message .= 'http://'. $_SERVER['SERVER_NAME'] . __SITE_URL . '/index.php?rt=authentication/verify&registration_sequence=' . $reg_seq . 
             '&email=' . $_POST["email"] ."\n";
             $headers  = 'From: rp2@studenti.math.hr' . "\r\n" .
 		            'Reply-To: rp2@studenti.math.hr' . "\r\n" .

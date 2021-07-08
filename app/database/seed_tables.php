@@ -22,13 +22,13 @@ function seed_table_users()
 													   registration_sequence, 
 													   has_registered, type) 
 							VALUES (:name, :surname, :email, 
-									:password, \'abc\', \'1\', :type)' );
+									:password, :registration_sequence, :has_registered, :type)' );
 
-		$st->execute( array( 'name' => 'Mirko', 'surname' => 'Mirković' , 'password' => password_hash( 'mirkovasifra', PASSWORD_DEFAULT ), 'email' => 'mirko.mirkovic@m.com', 'type' => 'buyer' ) );
-		$st->execute( array( 'name' => 'Slavko', 'surname' => 'Slavkić' , 'password' => password_hash( 'slavkovasifra', PASSWORD_DEFAULT ), 'email' => 'slavko.slavkic@s.com','type' => 'owner' ) );
-		$st->execute( array( 'name' => 'Ana', 'surname' => 'Anić', 'password' => password_hash( 'aninasifra', PASSWORD_DEFAULT ), 'email' => 'ana.anic@a.com', 'type' => 'owner' ) );
-		$st->execute( array( 'name' => 'Maja', 'surname' => 'Majić', 'password' => password_hash( 'majinasifra', PASSWORD_DEFAULT ), 'email' => 'maja.majic@m.com', 'type' => 'registered' ) );
-		$st->execute( array( 'name' => 'Pero', 'surname' => 'Perić' , 'password' => password_hash( 'perinasifra', PASSWORD_DEFAULT ), 'email' => 'pero.peric@p.com', 'type' => 'registered' ) );
+		$st->execute( array( 'name' => 'Mirko', 'surname' => 'Mirković' , 'password' => '', 'email' => 'mirko.mirkovic@m.com', 'registration_sequence' => '', 'has_registered' => '0', 'type' => 'buyer' ) );
+		$st->execute( array( 'name' => 'Slavko', 'surname' => 'Slavkić' , 'password' => password_hash( 'slavkovasifra', PASSWORD_DEFAULT ), 'registration_sequence' => 'abc', 'has_registered' => '1','email' => 'slavko.slavkic@s.com','type' => 'owner' ) );
+		$st->execute( array( 'name' => 'Ana', 'surname' => 'Anić', 'password' => password_hash( 'aninasifra', PASSWORD_DEFAULT ), 'registration_sequence' => 'abc', 'has_registered' => '1','email' => 'ana.anic@a.com', 'type' => 'owner' ) );
+		$st->execute( array( 'name' => 'Maja', 'surname' => 'Majić', 'password' => password_hash( 'majinasifra', PASSWORD_DEFAULT ), 'registration_sequence' => 'abc', 'has_registered' => '1','email' => 'maja.majic@m.com', 'type' => 'registered' ) );
+		$st->execute( array( 'name' => 'Pero', 'surname' => 'Perić' , 'password' => password_hash( 'perinasifra', PASSWORD_DEFAULT ), 'registration_sequence' => 'abc', 'has_registered' => '1','email' => 'pero.peric@p.com', 'type' => 'registered' ) );
 	}
 	catch( PDOException $e ) { exit( "PDO error project_users: " . $e->getMessage() ); }
 
