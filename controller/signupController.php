@@ -1,27 +1,23 @@
 <?php
 
-require_once __DIR__ . '/../model/product.class.php';
-require_once __DIR__ . '/../model/user.class.php';
-require_once __DIR__ . '/../model/sale.class.php';
-
-class SignupController
+class SignupController extends BaseController
 {
     public function index()
     {
-		$title = 'Sign up';
-		$message = '';
+		$this->registry->template->title = 'Sign up';
+		$this->registry->template->message = '';
         if( isset( $_POST["novi" ] ) && $_POST["novi"] === "novi" )
             $this->signup();
         else
-            require_once __DIR__ . '/../view/signup.php';
+            $this->registry->template->show('signup');
 
     }
 
     private function signup_failed($message = '')
     {
-        $title = 'Sign up failed';
-
-		require_once __DIR__ . '/../view/signup.php';
+        $this->registry->template->title = 'Sign up failed';
+        $this->registry->template->message = $message;
+		$this->registry->template->show('signup');
     }
 
     
@@ -30,48 +26,43 @@ class SignupController
     {
         //nisu postavljeni
         if( !isset( $_POST['name']) || !isset( $_POST['surname'])){
-            $this->message = "Name or surname is missing!";
-            require_once __DIR__ . '/../view/signup.php';
+            $this->signup_failed("Name or surname is missing!");
             return;
         }
 
         //sanitizacija name-a
         if( !preg_match( '/^[a-zA-Z0-9]{1,50}$/', $_POST['name'])){
-            $this->message = "Name is not valid!";
-            require_once __DIR__ . '/../view/signup.php';
+            $this->signup_failed("Name is not valid!");
             return;
         }
 
         //sanitizacija surname-a
         if( !preg_match( '/^[a-zA-Z0-9]{1,50}$/', $_POST['surname'])){
-            $this->message = "Surname is not valid!";
-            require_once __DIR__ . '/../view/signup.php';
+            $this->signup_failed("Surname is not valid!");
             return;
         }
-
-        //provjeri je li password prazan
-        if( $_POST['password'] === ""){
-            $this->message = "Password is not valid!";
-            require_once __DIR__ . '/../view/signup.php';
-            return;
-        }
-
-
+        
+        
         // Provjeri sastoji li se ime samo od slova; ako ne, crtaj login formu.
         if( !isset($_POST['email']) || !filter_var( $_POST['email'], FILTER_VALIDATE_EMAIL) )
 	    {
-		    $this->message = "Email is not valid!";
             $this->signup_failed("Email is not valid!");
             return;
 	    }
-
-
+        
+        
         // Možda se ne šalje password; u njemu smije biti bilo što.
         if( !isset( $_POST["password"] ) ){
             $this->signup_failed("Password is empty!");
             return;
         }
 
+        //provjeri je li password prazan
+        if( $_POST['password'] === ""){
+            $this->signup_failed("Password is not valid!");
+            return;
+        }
+        
         // Sve je OK, provjeri jel ga ima u bazi.
         if( User::where('email', $_POST["email"] ) )
         {

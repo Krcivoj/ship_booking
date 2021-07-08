@@ -1,6 +1,6 @@
 <?php require_once __DIR__ . '/_header.php'; ?>
 
-<form method="post" action="index.php?rt=login/signup" >
+<form method="post" action="index.php?rt=signup/signup" >
     Ime: 
     <input type="text" name="name" />
     <br />
