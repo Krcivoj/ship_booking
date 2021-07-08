@@ -8,7 +8,7 @@ class LoginController
 {
     public function index()
     {
-		$title = 'login';
+        $title = 'login';
 		$message = '';
         if( isset( $_POST["gumb" ] ) && $_POST["gumb"] === "login" )
             $this->login();
