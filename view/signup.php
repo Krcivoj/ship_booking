@@ -1,6 +1,6 @@
 <?php require_once __DIR__ . '/_header.php'; ?>
 
-<form method="post" action="index.php?rt=signup/signup" >
+<form method="post" action="index.php?rt=authentication/signup" >
     Ime: 
     <input type="text" name="name" />
     <br />
@@ -10,7 +10,7 @@
     Email:
     <input type="text" name="email" />
     <br />
-    Password:
+    Zaporka:
     <input type="password" name="password" />
     <br />
     <button type="submit" name="gumb" value="novi">Registiraj se!</button>
