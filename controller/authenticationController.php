@@ -58,7 +58,7 @@ class AuthenticationController extends BaseController
             {
                 // Dobar je. Ulogiraj ga.
                 $_SESSION['user'] = serialize($user);
-                header( 'Location: index.php?rt=user' );  //TODO
+                header( 'Location: index.php?rt=authentication/registered' );
                 return;
             }
             else
@@ -152,41 +152,74 @@ class AuthenticationController extends BaseController
             $user->password_hash = password_hash( $_POST['password' ], PASSWORD_DEFAULT );
             $user->has_registered = 0;
             $user->registration_sequence = $reg_seq;
-            $user->type = "buyer";
+            $user->type = "regestered";
             $user->save();
 
             // Sad mu jos posalji mail
-		    $to       = $_POST['email'];
-		    $subject  = 'Molimo potvrdite prijavu';
-		    $message  = 'Poštovani/a ' . $user->name .' '. $user->surname .",\n\n";
-            $message .= 'Dobrodošli i hvala što ste se prijavili. Kako bi dovršili proces prijave molimo Vas da potvrdite primitak ovog e-maila klikom na link: ';
-		    $message .= 'http://'. $_SERVER['SERVER_NAME'] . __SITE_URL . '/index.php?rt=authentication/verify&registration_sequence=' . $reg_seq . 
-            '&email=' . $_POST["email"] ."\n";
-            $headers  = 'From: rp2@studenti.math.hr' . "\r\n" .
-		            'Reply-To: rp2@studenti.math.hr' . "\r\n" .
-		            'X-Mailer: PHP/' . phpversion();
-
-		    $isOK = mail($to, $subject, $message, $headers);
-
-		    if( !$isOK )
-			    exit( 'Greska: ne mogu poslati mail. (Pokrenite na rp2 serveru.)' );
+            $this->sendVerificationEmail($user);
 
             // Sad ponovno nacrtaj login formu, tako da se user proba ulogirati.
-            header( 'Location: index.php?rt=login' );
+            header( 'Location: index.php?rt=authentication/registred' );
         }
+    }
+
+    private function sendVerificationEmail($user)
+    {
+        $to       = $user->email;
+        $subject  = 'Molimo potvrdite prijavu';
+        $message  = 'Poštovani/a ' . $user->name .' '. $user->surname .",\n\n";
+        $message .= 'Dobrodošli i hvala što ste se prijavili. Kako bi dovršili proces prijave molimo Vas da potvrdite primitak ovog e-maila klikom na link: ';
+        $message .= 'http://'. $_SERVER['SERVER_NAME'] . __SITE_URL . '/index.php?rt=authentication/verify&registration_sequence=' . $user->registration_sequence . 
+        '&id=' . $user->id ."\n";
+        $headers  = 'From: rp2@studenti.math.hr' . "\r\n" .
+                'Reply-To: rp2@studenti.math.hr' . "\r\n" .
+                'X-Mailer: PHP/' . phpversion();
+
+        $isOK = mail($to, $subject, $message, $headers);
+
+        if( !$isOK )
+        {
+            exit( 'Greska: ne mogu poslati mail. (Pokrenite na rp2 serveru.)' );
+            return false;
+        }
+        return true;
     }
 
     public function verify()
     {
-        if(!isset( $_GET["email"] ) || !isset( $_GET["registration_sequence"] ))
+        if(!isset( $_GET["id"] ) || !isset( $_GET["registration_sequence"] ))
             echo "Nesto nije u redu";
-        $user=User::where("email", $_GET["email"])[0];
+        $user=User::find($_GET["id"]);
 
         //Ako je ključna riječ točna napravi promjenu u bazi.
         if($user->registration_sequence === $_GET["registration_sequence"]){
             $user->has_registered = 1;
             $user->save();
+            header( 'Location: index.php?rt=authentication/registred' );
         }
+    }
+
+    public function registered()
+    {
+        if(isset($_SESSION['user'])){
+            $user = unserialize($_SESSION['user']);
+            if($user->has_registred === 1)
+                header( 'Location: index.php?rt=search/index' );
+
+            if(isset($_POST["again"]) && $_POST["again"] == 'again'){
+                //ponovno šalje mail
+                $this->sendVerificationEmail($user);
+            }
+            $message = "Za dovršetak registracije potrebno je potvrditi email adresu.\n Email sa linkom za potvrdu poslan je na adresu "
+            . $user->email . ". Provjerite pretinac neželjene pošte.";
+            $this->registry->template->title = 'Verifikacija emaila';
+            $this->registry->template->message =  $message;
+            $this->registry->template->show('verify');
+        }
+        else 
+            header( 'Location: index.php?rt=authentication/index' );
+
+
     }
 
     public function logout()

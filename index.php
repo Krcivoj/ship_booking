@@ -6,6 +6,7 @@
 define( '__SITE_PATH', realpath( dirname( __FILE__ ) ) );
 define( '__SITE_URL', dirname( $_SERVER['PHP_SELF'] ) );
 
+session_start();
 
 // Inicijaliziraj aplikaciju (učitava bazne klase, autoload klasa iz modela).
 require_once 'app/init.php';
