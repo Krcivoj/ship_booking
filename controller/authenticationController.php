@@ -1,10 +1,13 @@
 <?php
 
+use function PHPSTORM_META\type;
 
 class AuthenticationController extends BaseController
 {
     public function index()
     {
+        if(isset($_SESSION['user']))
+            header('Location: index.php?rt=index');
         $this->registry->template->title = 'Prijava';
 		$this->registry->template->message = '';
         if( isset( $_POST["gumb" ] ) && $_POST["gumb"] === "login" )
@@ -57,7 +60,7 @@ class AuthenticationController extends BaseController
             if( password_verify( $_POST['password'], $hash ) )
             {
                 // Dobar je. Ulogiraj ga.
-                $_SESSION['user'] = serialize($user);
+                $_SESSION['tempUser'] = serialize($user);
                 header( 'Location: index.php?rt=authentication/registered' );
                 return;
             }
@@ -99,13 +102,13 @@ class AuthenticationController extends BaseController
         }
 
         //sanitizacija name-a
-        if( !preg_match( '/^[a-zA-Z0-9]{1,50}$/', $_POST['name'])){
+        if( !preg_match( "/^[a-zA-Z-' ]{1,50}$/", $_POST['name'])){
             $this->signup_failed("Name is not valid!");
             return;
         }
 
         //sanitizacija surname-a
-        if( !preg_match( '/^[a-zA-Z0-9]{1,50}$/', $_POST['surname'])){
+        if( !preg_match( "/^[a-zA-Z-' ]{1,50}$/", $_POST['surname'])){
             $this->signup_failed("Surname is not valid!");
             return;
         }
@@ -120,13 +123,13 @@ class AuthenticationController extends BaseController
         
         
         // Možda se ne šalje password; u njemu smije biti bilo što.
-        if( !isset( $_POST["password"] ) ){
-            $this->signup_failed("Password is empty!");
+        if( !isset( $_POST["password"] ) || !preg_match('/^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]{8,})$/', $_POST["password"] )){
+            $this->signup_failed("Password is not valid!");
             return;
         }
 
         //provjeri je li password prazan
-        if( $_POST['password'] === ""){
+        if( !isset( $_POST["repeatPassword"] ) || $_POST['password'] !== $_POST["repeatPassword"]){
             $this->signup_failed("Password is not valid!");
             return;
         }
@@ -159,7 +162,7 @@ class AuthenticationController extends BaseController
             $this->sendVerificationEmail($user);
 
             // Sad ponovno nacrtaj login formu, tako da se user proba ulogirati.
-            header( 'Location: index.php?rt=authentication/registred' );
+            header( 'Location: index.php?rt=authentication/registered' );
         }
     }
 
@@ -187,24 +190,40 @@ class AuthenticationController extends BaseController
 
     public function verify()
     {
+        $this->registry->template->btn = true;
         if(!isset( $_GET["id"] ) || !isset( $_GET["registration_sequence"] ))
-            echo "Nesto nije u redu";
-        $user=User::find($_GET["id"]);
-
-        //Ako je ključna riječ točna napravi promjenu u bazi.
-        if($user->registration_sequence === $_GET["registration_sequence"]){
-            $user->has_registered = 1;
-            $user->save();
-            header( 'Location: index.php?rt=authentication/registred' );
+            $this->registry->template->message = "Verifikacijski link nije ispravan!";
+        else {
+            $user=User::find($_GET["id"]);
+    
+            //Ako je ključna riječ točna napravi promjenu u bazi.
+            if($user->registration_sequence === $_GET["registration_sequence"]){
+                if($user->has_registered === '1'){
+                    $this->registry->template->message =  "Već ste ranije dovršili registraciju!";
+                    $this->registry->template->btn = false;
+                }
+                else{
+                $user->has_registered = 1;
+                $user->save();
+                $this->registry->template->message =  "Registracija uspješno dovršena.";
+                }
+            }
+            else $this->registry->template->message = "Verifikacija nije uspjela. Zatražite ponovno slanje emaila.";
         }
+        $this->registry->template->title = 'Verifikacija emaila';
+        $this->registry->template->show('verify');
     }
 
     public function registered()
     {
-        if(isset($_SESSION['user'])){
-            $user = unserialize($_SESSION['user']);
-            if($user->has_registred === 1)
+        if(isset($_SESSION['tempUser'])){
+            $user = unserialize($_SESSION['tempUser']);
+            echo gettype($user->has_registered);
+            if($user->has_registered === '1'){
+                $_SESSION['tempUser'] = $_SESSION['user'];
+                unset($_SESSION['tempUser']);
                 header( 'Location: index.php?rt=search/index' );
+            }
 
             if(isset($_POST["again"]) && $_POST["again"] == 'again'){
                 //ponovno šalje mail
