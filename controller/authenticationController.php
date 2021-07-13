@@ -10,12 +10,12 @@ class AuthenticationController extends BaseController
             header('Location: index.php?rt=index');
         $this->registry->template->title = 'Prijava';
 		$this->registry->template->message = '';
-        if( isset( $_POST["gumb" ] ) && $_POST["gumb"] === "login" )
+        if( isset( $_POST["gumb" ] ) && $_POST["gumb"] === "prijavi se" )
             $this->login();
-        else if( isset( $_POST["gumb" ] ) && $_POST["gumb"] === "novi" ){
-            header( 'Location: index.php?rt=authentication/signup_index' );
-            return;
-        }
+        //else if( isset( $_POST["gumb" ] ) && $_POST["gumb"] === "registriraj se" ){
+        //    header( 'Location: index.php?rt=authentication/signup_index' );
+        //    return;
+        //}
         else
             $this->registry->template->show('login');
 
@@ -23,7 +23,7 @@ class AuthenticationController extends BaseController
 
     private function login_failed($message = '')
     {
-        $this->registry->template->title = 'Greška prilkom prijave';
+        $this->registry->template->title = 'Greška prilikom prijave';
         $this->registry->template->message = $message;
 		$this->registry->template->show('login');
     }
@@ -77,7 +77,7 @@ class AuthenticationController extends BaseController
     {
 		$this->registry->template->title = 'Izradi svoj račun';
 		$this->registry->template->message = '';
-        if( isset( $_POST["novi" ] ) && $_POST["novi"] === "novi" )
+        if( isset( $_POST["gumb" ] ) && $_POST["gumb"] === "novi" )
             $this->signup();
         else
             $this->registry->template->show('signup');
@@ -195,7 +195,7 @@ class AuthenticationController extends BaseController
             $this->registry->template->message = "Verifikacijski link nije ispravan!";
         else {
             $user=User::find($_GET["id"]);
-    
+
             //Ako je ključna riječ točna napravi promjenu u bazi.
             if($user->registration_sequence === $_GET["registration_sequence"]){
                 if($user->has_registered === 1){

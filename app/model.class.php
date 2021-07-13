@@ -264,7 +264,7 @@ abstract class Model
         $keys = '';
         $values = '';
         $keyValue = array();
-        foreach($thisClassName::$attributes as $attribut)
+        foreach($thisClassName::$attributes as $attribut => $type)
         {
                 $keys .= $attribut . ', ';
                 $values .= ':' . $attribut . ', ';
