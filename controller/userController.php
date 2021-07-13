@@ -1,30 +1,35 @@
 <?php 
 
-require_once __DIR__ . '/../model/product.class.php';
-require_once __DIR__ . '/../model/user.class.php';
-require_once __DIR__ . '/../model/sale.class.php';
-
-class UserController
+class UserController extends BaseController
 {
 	public function index() 
 	{
-
-		$title = 'My products';
-		$user =unserialize($_SESSION['user']);
-		$username = $user->username;
-		$heading = 'PRODUCTS AVAILABLE IN <font class="name">' . $username . '\'s</font> SHOP';
-		$productList = $user->products();
-		require_once __DIR__ . '/../view/user_products.php';
+		if(!isset($_SESSION['user']))
+			header('location: index.php?rt=authentication');
+		
+		//require_once __DIR__ . '/../view/user_products.php';
 	}
 
-	public function history()
+	public function reservations()
 	{
-		$title = 'My history';
+		$this->registry->template->title = 'Moje rezervacije';
 		$user =unserialize($_SESSION['user']);
-		$username = $user->username;
-		$heading = 'PRODUCTS PURCHASED BY <font class="name">'. $username . '</font>';
-		$productList = $user->history();
-		require_once __DIR__ . '/../view/user_products.php';
+		$reservationList = $user->reservations();
+		foreach($reservationList as $reservation){
+			$this->registry->template->reservation = $reservation;
+			$this->registry->template->show('reservation');
+		}
+	}
+
+	public function ships()//TODO
+	{
+		$this->registry->template->title = 'Moje rezervacije';
+		$user =unserialize($_SESSION['user']);
+		$shipList = $user->ships();
+		foreach($shipList as $ship){
+			$this->registry->template->reservation = $ship;
+			$this->registry->template->show('reservation');
+		}
 	}
 }; 
 

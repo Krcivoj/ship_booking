@@ -74,8 +74,10 @@ abstract class Model
 		while( $row = $st->fetch() )
 		{
 			$obj = new $className();
-            foreach($className::$attributes as $attribut)
+            foreach($className::$attributes as $attribut=>$type){
+                settype($row[$attribut], $type);
                 $obj->$attribut = $row[$attribut];
+            }
             $obj->construct();
             $arr[] = $obj;
 		}
@@ -103,8 +105,10 @@ abstract class Model
 		else
         {
             $obj = new $thisClassName();
-            foreach($thisClassName::$attributes as $attribut)
+            foreach($thisClassName::$attributes as $attribut=>$type){
+                settype($row[$attribut], $type);
                 $obj->$attribut = $row[$attribut];
+            }
             $obj->construct();
             return $obj;
         }
@@ -127,8 +131,10 @@ abstract class Model
 		while( $row = $st->fetch() )
 		{
 			$obj = new $thisClassName();
-            foreach($thisClassName::$attributes as $attribut)
+            foreach($thisClassName::$attributes as $attribut=>$type){
+                settype($row[$attribut], $type);
                 $obj->$attribut = $row[$attribut];
+            }
             $obj->construct();
             $arr[] = $obj;
 		}
@@ -136,27 +142,31 @@ abstract class Model
 		return $arr;
     }
 
-    public static function whereLike($param)
+    public static function whereLike($column, $value)
     {
         //Kao where sano se ovdije ne provjerava jednakost nego se koristi ključna riječ LIKE
+        $thisClassName = get_called_class();
         try
 		{
 			$db = DB::getConnection();
-			$st = $db->prepare( 'SELECT id, id_user, name, description, price FROM dz2_products WHERE name LIKE :name' );
-			$st->execute( array( 'name' => $param ) );
+			$st = $db->prepare( 'SELECT * FROM ' . $thisClassName::$table . ' WHERE '. $column . 'LIKE :column');
+			$st->execute( array( 'column' => $value ) );
 		}
-		catch( PDOException $e ) { exit( 'PDO error ' . $e->getMessage() ); }
+		catch( PDOException $e ) { exit( 'PDO (where) error ' . $e->getMessage() ); }
 
+		$arr = array();
 		while( $row = $st->fetch() )
 		{
-			$obj = new Product();
-            foreach(Product::$attributes as $attribut)
+			$obj = new $thisClassName();
+            foreach($thisClassName::$attributes as $attribut=>$type){
+                settype($row[$attribut], $type);
                 $obj->$attribut = $row[$attribut];
+            }
             $obj->construct();
             $arr[] = $obj;
 		}
 
-        return $arr;
+		return $arr;
     }
 
     public function belongsTo( $className, $foreign_key )
@@ -178,8 +188,10 @@ abstract class Model
 		else
         {
             $obj = new $className();
-            foreach($className::$attributes as $attribut)
+            foreach($className::$attributes as $attribut=>$type){
+                settype($row[$attribut], $type);
                 $obj->$attribut = $row[$attribut];
+            }
             $obj->construct();
             return $obj;
         }
@@ -204,8 +216,10 @@ abstract class Model
 		while( $row = $st->fetch() )
 		{
 			$obj = new $className();
-            foreach($className::$attributes as $attribut)
+            foreach($className::$attributes as $attribut=>$type){
+                settype($row[$attribut], $type);
                 $obj->$attribut = $row[$attribut];
+            }
             $obj->construct();
             $arr[] = $obj;
 		}

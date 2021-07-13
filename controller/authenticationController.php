@@ -198,7 +198,7 @@ class AuthenticationController extends BaseController
     
             //Ako je ključna riječ točna napravi promjenu u bazi.
             if($user->registration_sequence === $_GET["registration_sequence"]){
-                if($user->has_registered === '1'){
+                if($user->has_registered === 1){
                     $this->registry->template->message =  "Već ste ranije dovršili registraciju!";
                     $this->registry->template->btn = false;
                 }
@@ -219,8 +219,8 @@ class AuthenticationController extends BaseController
         if(isset($_SESSION['tempUser'])){
             $user = unserialize($_SESSION['tempUser']);
             echo gettype($user->has_registered);
-            if($user->has_registered === '1'){
-                $_SESSION['tempUser'] = $_SESSION['user'];
+            if($user->has_registered === 1){
+                $_SESSION['user'] = $_SESSION['tempUser'];
                 unset($_SESSION['tempUser']);
                 header( 'Location: index.php?rt=search/index' );
             }

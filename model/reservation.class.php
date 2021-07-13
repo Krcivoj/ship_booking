@@ -3,9 +3,9 @@
 class Reservation extends Model
 {
 	static protected $table = 'project_reservations';
-    static protected $attributes  = ['id', 'id_buyer', 'id_ship', 'date_buy', 'date_trip', 
-    'ticket_kids', 'ticket_adults', 'code', 'menu_meat', 'menu_fish', 'menu_veg', 'animals', 
-    'rating', 'comment'];
+    static protected $attributes  = ['id'=>'int', 'id_buyer'=>'int', 'id_ship'=>'int', 'date_buy'=>'int',
+     'date_trip'=>'int', 'ticket_kids'=>'int', 'ticket_adults'=>'int', 'code'=>'string', 'menu_meat'=>'int',
+      'menu_fish'=>'int', 'menu_veg'=>'int', 'animals'=>'int', 'rating'=>'int', 'comment'=>'string'];
 }
 
 ?>

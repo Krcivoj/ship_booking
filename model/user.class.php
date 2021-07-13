@@ -3,12 +3,18 @@
 class User extends Model
 {
 	static protected $table = 'project_users';
-    static protected $attributes  = ['id', 'name', 'surname', 'email', 'password_hash', 'registration_sequence', 'has_registered', 'type'];
+    static protected $attributes  = ['id'=>'int', 'name'=>'string', 'surname'=>'string', 'email'=>'string',
+	 'password_hash'=>'string', 'registration_sequence'=>'string', 'has_registered'=>'int', 'type'=>'string'];
 
-	// public function products()
-	// {
-	// 	return $this->hasMany('Product', 'id_user');
-	// }
+	public function reservations()
+	{
+		return $this->hasMany('Reservation', 'id_buyer');
+	}
+
+	public function ships()
+	{
+		return $this->hasMany('Ship', 'id_owner');
+	}
 
 	// public function history()
 	// {
