@@ -112,6 +112,7 @@ function create_table_reservations()
 			'id_ship int NOT NULL,' .
 			'date_buy date NOT NULL,' .
 			'date_trip date NOT NULL,' .
+			'ticket_baby int NOT NULL,' .
 			'ticket_kids int NOT NULL,' .
 			'ticket_adults int NOT NULL,' .
 			'code varchar(20) NOT NULL,' .

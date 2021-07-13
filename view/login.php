@@ -42,7 +42,7 @@
                                 <input type="password" name="password" id="your_pass" class="podaci" placeholder="Lozinka"/>
                             </div>
                             <div class="form-group form-button">
-                                <input type="submit" name="gumb" value="prijavi se" id="signin" class="button" />
+                                <input type="submit" name="gumb" value="prijavi se" id="signin" class="button-submit" />
                             </div>
                         </form>
                     </div>

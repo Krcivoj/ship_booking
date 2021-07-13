@@ -63,7 +63,7 @@
                                 <input id="repeatPassword" type="password" name="repeatPassword" class="podaci" placeholder="Ponovite lozinku"/>
                             </div>
                             <div class="form-group form-button">
-                                <input id="btn" type="submit" name="gumb" class="button" value="registriraj se"/>
+                                <input id="btn" type="submit" name="gumb" class="button-submit" value="registriraj se"/>
                             </div>
                         </form>
                     </div>
