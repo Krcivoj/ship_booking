@@ -157,7 +157,7 @@ class AuthenticationController extends BaseController
             $user->registration_sequence = $reg_seq;
             $user->type = "regestered";
             $user->save();
-
+            $user = User::whereOne('email', $user->email);
             // Sad mu jos posalji mail
             $this->sendVerificationEmail($user);
 
@@ -197,7 +197,7 @@ class AuthenticationController extends BaseController
             $user=User::find($_GET["id"]);
 
             //Ako je ključna riječ točna napravi promjenu u bazi.
-            if($user->registration_sequence === $_GET["registration_sequence"]){
+            if($user !== null && $user->registration_sequence === $_GET["registration_sequence"]){
                 if($user->has_registered === 1){
                     $this->registry->template->message =  "Već ste ranije dovršili registraciju!";
                     $this->registry->template->btn = false;

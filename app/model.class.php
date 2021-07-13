@@ -142,6 +142,34 @@ abstract class Model
 		return $arr;
     }
 
+    public static function whereOne( $column, $value )
+    {
+        // TODO:
+        // Funkcija vraća polje koje sadrži sve objekte iz tablice $table kojima u stupcu $column piše vrijednost $value.
+        $thisClassName = get_called_class();
+        try
+		{
+			$db = DB::getConnection();
+			$st = $db->prepare( 'SELECT * FROM ' . $thisClassName::$table . ' WHERE '. $column . '=:column');
+			$st->execute( array( 'column' => $value ) );
+		}
+		catch( PDOException $e ) { exit( 'PDO (where) error ' . $e->getMessage() ); }
+
+        $row = $st->fetch();
+		if( $row === false )
+			return null;
+		else
+        {
+            $obj = new $thisClassName();
+            foreach($thisClassName::$attributes as $attribut=>$type){
+                settype($row[$attribut], $type);
+                $obj->$attribut = $row[$attribut];
+            }
+            $obj->construct();
+            return $obj;
+        }
+    }
+
     public static function whereLike($column, $value)
     {
         //Kao where sano se ovdije ne provjerava jednakost nego se koristi ključna riječ LIKE
@@ -246,8 +274,10 @@ abstract class Model
 		else
         {
             $obj = new $className();
-            foreach($className::$attributes as $attribut)
+            foreach($className::$attributes as $attribut=>$type){
+                settype($row[$attribut], $type);
                 $obj->$attribut = $row[$attribut];
+            }
             $obj->construct();
             return $obj;
         }
