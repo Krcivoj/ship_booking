@@ -100,41 +100,41 @@ function seed_table_reservations()
 	try
 	{
 		$st = $db->prepare( 'INSERT INTO project_reservations(id_buyer, id_ship, date_buy, date_trip,
-															  ticket_kids, ticket_adults, code, 
+															  ticket_baby,ticket_kids, ticket_adults, code, 
 															  menu_meat, menu_fish, menu_veg, 
 															  animals, rating, comment) 
 							VALUES (:id_buyer, :id_ship, :date_buy, :date_trip,
-									:ticket_kids, :ticket_adults, :code, 
+									:ticket_baby,:ticket_kids, :ticket_adults, :code, 
 									:menu_meat, :menu_fish, :menu_veg, 
 									:animals, :rating, :comment)' );
 
 		$st->execute( array('id_buyer' => 1, 'id_ship' => 1, 'date_buy' => '2020-06-21', 'date_trip' => '2020-06-30',
-							'ticket_kids' => 2, 'ticket_adults' => 2, 'code' => 'a75jfbeo2bfzw5sncws',
+							'ticket_baby' => 1,'ticket_kids' => 2, 'ticket_adults' => 2, 'code' => 'a75jfbeo2bfzw5sncws',
 							'menu_meat' => 4, 'menu_fish' => 0, 'menu_veg' => 0,
 							'animals' => 0, 'rating' => 5, 'comment' => 'Very good experience. Try it yourself! Fun, fun, fun!'
 		));
 		$st->execute( array('id_buyer' => 2, 'id_ship' => 2, 'date_buy' => '2020-07-01', 'date_trip' => '2020-07-02',
-							'ticket_kids' => 4, 'ticket_adults' => 5, 'code' => 'jcricnfbeo92fzw5snc',
+							'ticket_baby' => 2,'ticket_kids' => 4, 'ticket_adults' => 5, 'code' => 'jcricnfbeo92fzw5snc',
 							'menu_meat' => 4, 'menu_fish' => 4, 'menu_veg' => 1,
 							'animals' => 2, 'rating' => 4, 'comment' => 'Expected more. Little bit boring and monotonous. But, service, safety, food great. '
 		));
 		$st->execute( array('id_buyer' => 3, 'id_ship' => 2, 'date_buy' => '2020-06-20', 'date_trip' => '2020-06-30',
-							'ticket_kids' => 3, 'ticket_adults' => 2, 'code' => 'a75982hzr56fzwsncww',
+							'ticket_baby' => 0,'ticket_kids' => 3, 'ticket_adults' => 2, 'code' => 'a75982hzr56fzwsncww',
 							'menu_meat' => 0, 'menu_fish' => 0, 'menu_veg' => 5,
 							'animals' => 1, 'rating' => 5, 'comment' => 'Very good, we enjoyed!'
 		));
 		$st->execute( array('id_buyer' => 2, 'id_ship' => 3, 'date_buy' => '2021-05-30', 'date_trip' => '2021-06-15',
-							'ticket_kids' => 3, 'ticket_adults' => 5, 'code' => 'wa75jfbeo9298hz5ncw',
+							'ticket_baby' => 1,'ticket_kids' => 3, 'ticket_adults' => 5, 'code' => 'wa75jfbeo9298hz5ncw',
 							'menu_meat' => 0, 'menu_fish' => 8, 'menu_veg' => 0,
 							'animals' => 0, 'rating' => 5, 'comment' => 'Totally new experience, interesting and fun. Food is great and fresh!'
 		));
 		$st->execute( array('id_buyer' => 3, 'id_ship' => 3, 'date_buy' => '2021-6-10', 'date_trip' => '2021-07-01',
-							'ticket_kids' => 0, 'ticket_adults' => 7, 'code' => 'a75jfbeo92fz7hgtr4f5',
+							'ticket_baby' => 0,'ticket_kids' => 0, 'ticket_adults' => 7, 'code' => 'a75jfbeo92fz7hgtr4f5',
 							'menu_meat' => 0, 'menu_fish' => 7, 'menu_veg' => 0,
 							'animals' => 0, 'rating' => null, 'comment' => null
 		));
 		$st->execute( array('id_buyer' => 2, 'id_ship' => 4, 'date_buy' => '2021-06-01', 'date_trip' => '2021-07-02',
-							'ticket_kids' => 2, 'ticket_adults' => 2, 'code' => '4a75jfbelkjhgfdsncw',
+							'ticket_baby' => 1,'ticket_kids' => 2, 'ticket_adults' => 2, 'code' => '4a75jfbelkjhgfdsncw',
 							'menu_meat' => 1, 'menu_fish' => 3, 'menu_veg' => 0,
 							'animals' => 0, 'rating' => null, 'comment' => null
 		));
