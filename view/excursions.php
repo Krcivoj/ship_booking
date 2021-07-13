@@ -21,13 +21,13 @@
                 <div class="wrap">
 
                   <div class="l">
-                    <label for="fname">Mjesto polaska</label>
-                    <input id="fname" type="text" class="cool"/>
+                    <label for="place">Mjesto polaska</label>
+                    <input id="place" type="text" class="cool"/>
                   </div>
 
                   <div class="r">
-                    <label for="lname">Lokacija koju želim posjetiti</label>
-                    <input id="lname" type="text" class="cool"/>
+                    <label for="location">Lokacija koju želim posjetiti</label>
+                    <input id="location" type="text" class="cool"/>
                   </div>
                 </div>
                 <script>
@@ -45,5 +45,5 @@
 
             </div>
         </section>
-
+        <script src="<?php echo __SITE_URL; ?>/js/excursions.js" ></script>
 <?php require_once __SITE_PATH . '/view/_footer.php'; ?>

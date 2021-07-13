@@ -73,6 +73,5 @@
 
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
 <script src="<?php echo __SITE_URL; ?>/js/signup.js" ></script>
 <?php require_once __DIR__ . '/_footer.php'; ?>

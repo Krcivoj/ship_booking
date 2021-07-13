@@ -6,11 +6,11 @@ class IndexController
 	{
 		// Samo preusmjeri na product podstranicu.
 		if( isset($_SESSION['user']))
-			header( 'Location: index.php?rt=product' );
+			header( 'Location: index.php?rt=excursions' );
 		else
 			// header( 'Location: index.php?rt=login' );
 			//Ovo je privremeno da radi
-			header( 'Location: index.php?rt=product' );
+			header( 'Location: index.php?rt=excursions' );
 	}
 }; 
 

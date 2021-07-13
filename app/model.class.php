@@ -25,7 +25,7 @@ spl_autoload_register( function ($class_name)
 } );
 
 
-abstract class Model
+abstract class Model implements JsonSerializable
 {
     // Tablica u bazi podataka pridružena modelu. Svaka izvedena klase će definirati svoju.
     protected static $table = null;
@@ -57,15 +57,19 @@ abstract class Model
 
     protected function construct(){}
 
+    public function jsonSerialize() {
+		return $this->columns;
+	}
+
     public static function all()
     {
         // TODO:
         // Funkcija vraća polje koje sadrži sve objekte iz tablice $table.
-        $className = get_called_class();
+        $thisClassName = get_called_class();
         try
 		{
 			$db = DB::getConnection();
-			$st = $db->prepare( 'SELECT * FROM ' . $className::$table );
+			$st = $db->prepare( 'SELECT * FROM ' . $thisClassName::$table );
 			$st->execute( );
 		}
 		catch( PDOException $e ) { exit( 'PDO (all) error ' . $e->getMessage() ); }
@@ -73,8 +77,8 @@ abstract class Model
 		$arr = array();
 		while( $row = $st->fetch() )
 		{
-			$obj = new $className();
-            foreach($className::$attributes as $attribut=>$type){
+			$obj = new $thisClassName();
+            foreach($thisClassName::$attributes as $attribut=>$type){
                 settype($row[$attribut], $type);
                 $obj->$attribut = $row[$attribut];
             }
@@ -153,7 +157,7 @@ abstract class Model
 			$st = $db->prepare( 'SELECT * FROM ' . $thisClassName::$table . ' WHERE '. $column . '=:column');
 			$st->execute( array( 'column' => $value ) );
 		}
-		catch( PDOException $e ) { exit( 'PDO (where) error ' . $e->getMessage() ); }
+		catch( PDOException $e ) { exit( 'PDO (whereOne) error ' . $e->getMessage() ); }
 
         $row = $st->fetch();
 		if( $row === false )
@@ -177,10 +181,10 @@ abstract class Model
         try
 		{
 			$db = DB::getConnection();
-			$st = $db->prepare( 'SELECT * FROM ' . $thisClassName::$table . ' WHERE '. $column . 'LIKE :column');
-			$st->execute( array( 'column' => $value ) );
+			$st = $db->prepare( 'SELECT * FROM ' . $thisClassName::$table . ' WHERE '. $column . ' LIKE :column');
+			$st->execute( array( 'column' => '%'.$value.'%' ) );
 		}
-		catch( PDOException $e ) { exit( 'PDO (where) error ' . $e->getMessage() ); }
+		catch( PDOException $e ) { exit( 'PDO (whereLike) error ' . $e->getMessage() ); }
 
 		$arr = array();
 		while( $row = $st->fetch() )
@@ -310,7 +314,7 @@ abstract class Model
             
             $st->execute( $keyValue );
         }
-        catch( PDOException $e ) { exit( "PDO error [save]: " . $e->getMessage() ); }
+        catch( PDOException $e ) { exit( "PDO (save) error : " . $e->getMessage() ); }
         }
 }
 
