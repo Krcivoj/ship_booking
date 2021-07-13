@@ -31,6 +31,7 @@ class ProductController
     
     public function search()
     {
+        /*
  		$title = 'Search';
 		$user =unserialize($_SESSION['user']);
 		$username = $user->username;
@@ -42,6 +43,7 @@ class ProductController
             $param = '%' . $_POST['search'] . '%';
 		    $productList = Product::whereLike($param);
         }
+        */
 		require_once __DIR__ . '/../view/product_search.php';
     }
 
