@@ -61,7 +61,7 @@ class AuthenticationController extends BaseController
             {
                 // Dobar je. Ulogiraj ga.
                 $_SESSION['tempUser'] = serialize($user);
-                header( 'Location: index.php' );  //PROMJENA
+                header( 'Location: index.php?rt=authentication/registered' );  //PROMJENA
                 return;
             }
             else
@@ -206,9 +206,13 @@ class AuthenticationController extends BaseController
                 $user->has_registered = 1;
                 $user->save();
                 $this->registry->template->message =  "Registracija uspješno dovršena.";
+                $this->registry->template->btn = false;
                 }
             }
-            else $this->registry->template->message = "Verifikacija nije uspjela. Zatražite ponovno slanje emaila.";
+            else 
+            {
+                $this->registry->template->message = "Verifikacija nije uspjela. Zatražite ponovno slanje emaila.";
+            }
         }
         $this->registry->template->title = 'Verifikacija emaila';
         $this->registry->template->show('verify');
@@ -218,7 +222,6 @@ class AuthenticationController extends BaseController
     {
         if(isset($_SESSION['tempUser'])){
             $user = unserialize($_SESSION['tempUser']);
-            echo gettype($user->has_registered);
             if($user->has_registered === 1){
                 $_SESSION['user'] = $_SESSION['tempUser'];
                 unset($_SESSION['tempUser']);
@@ -233,6 +236,7 @@ class AuthenticationController extends BaseController
             . $user->email . ". Provjerite pretinac neželjene pošte.";
             $this->registry->template->title = 'Verifikacija emaila';
             $this->registry->template->message =  $message;
+            $this->registry->template->btn = true;
             $this->registry->template->show('verify');
         }
         else 
