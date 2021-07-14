@@ -42,4 +42,8 @@
                 </div>
             </div>
         </section>
+<?php 
+    if( $message !== '' )
+        echo '<p style="color:red; font-family: Garamond; font-size: 10px>' . $message . '</p>';
+?>
 <?php require_once __DIR__ . '/_footer.php'; ?>

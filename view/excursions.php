@@ -312,7 +312,9 @@
               <p id="rezultat-polazak"  style=" margin-top:0;font-family:sans-serif; font-size:15px;color:#306a82;">Polazak: Krk</p>
               <p id="rezultat-trajanje"  style=" margin-top:0;font-family:sans-serif; font-size:15px;color:#306a82;">Trajanje: 10-17h</p>
               <p id="rezultat-ocijena"  style=" margin-top:0;font-family:sans-serif; font-size:15px;color:#306a82;">Ocijena: 5</p>
-              <button id="1" class="rezervacija">REZERVIRAJ</button> 
+              <form method="post" action="index.php?rt=ship/reservation">
+              <button id="1" class="rezervacija" type="submit">REZERVIRAJ</button>
+              </form> 
             </div>
           
           

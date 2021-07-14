@@ -19,10 +19,7 @@
     <button id="btn" type="submit" name="gumb" value="novi">Registiraj se!</button>
 </form>
 -->
-<?php 
-    //if( $message !== '' )
-    //    echo '<p>' . $message . '</p>';
-?>
+
         
         <section class="signup">
             <div class="container">
@@ -64,7 +61,10 @@
                 </div>
             </div>
         </section>
-
+<?php 
+    //if( $message !== '' )
+    //    echo '<p style="color:red; font-family: Garamond; font-size: 10px>' . $message . '</p>';
+?>
 
 
 <script src="<?php echo __SITE_URL; ?>/js/signup.js" ></script>

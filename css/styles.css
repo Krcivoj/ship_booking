@@ -1004,7 +1004,6 @@ label {
 /*dio za prikazivanje brodova*/
 .popis{
   width:100%;
-  margin: 30px;
   display: inline-block;
 }
 .rezultat{
