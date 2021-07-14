@@ -8,7 +8,7 @@
           </ul>
         </div>
 
-        <section class="index">
+        <section class="index" >
             <div class="center">
                 <div class="main">
                     <div class="search">
@@ -317,8 +317,8 @@
               <p id="rezultat-cijena"  style=" margin-top:10px;font-family:sans-serif; font-size:15px;color:#306a82;">Cijena: 230/340 kn</p>
               <p id="rezultat-polazak"  style=" margin-top:0;font-family:sans-serif; font-size:15px;color:#306a82;">Polazak: Krk</p>
               <p id="rezultat-trajanje"  style=" margin-top:0;font-family:sans-serif; font-size:15px;color:#306a82;">Trajanje: 10-17h</p>
-              <p id="rezultat-ociena"  style=" margin-top:0;font-family:sans-serif; font-size:15px;color:#306a82;">Ocijena: 5</p>
-
+              <p id="rezultat-ocijena"  style=" margin-top:0;font-family:sans-serif; font-size:15px;color:#306a82;">Ocijena: 5</p>
+              <button id="1" class="rezervacija">REZERVIRAJ</button> 
             </div>
           
           

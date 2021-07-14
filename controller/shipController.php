@@ -80,7 +80,7 @@ class ShipController extends BaseController
                     $reservation->save();
             }
             else{
-                $this->registry->template->show('reservation');
+                $this->registry->template->show('reservation_make');
             }
             
         }

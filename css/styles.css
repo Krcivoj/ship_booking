@@ -1010,8 +1010,8 @@ label {
 .rezultat{
   float:left;
   margin:10px;
-  height: 150px;
-  width: 20%;
+  height: 200px;
+  width: 23%;
   margin-left: 20px;
   margin-right: 20px;
   background-color:  rgb(245, 221, 176, 0.8);
@@ -1025,4 +1025,15 @@ label {
   float:left;
   margin-left: 20px;
   margin-top: 10px;
+}
+.rezervacija{
+  margin-top:5px;
+  background-color: transparent;
+  border-radius: 5px;
+  border: 2px solid #306a82;
+  color:#306a82;
+  font-family: 'Exo 2', sans-serif;
+  font-size:15px;
+  font-weight: bold;
+
 }
