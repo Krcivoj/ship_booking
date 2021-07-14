@@ -1,11 +1,5 @@
 <?php require_once __SITE_PATH . '/view/_header.php'; ?>
-<div class="nav">
-          <ul class="menu-bar">
-            <a href="index.php?rt=excursions" id="link"><li class="left">DISCOVER KVARNER</li></a>
-            <li class="right"><a href="index.php?rt=authentication/login" class="button">Prijavi se</a></li>
-            <li class="right"><a href="index.php?rt=authentication/signup_index" class="button">Registriraj se</a></li>
-          </ul>
-</div>
+
 
 <div style="display:inline-block;margin-top: 30px;width:100%">
   <div class="forma" style="margin-left:15px; margin-right:15px;height:500px;">

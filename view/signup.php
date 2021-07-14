@@ -23,13 +23,7 @@
     //if( $message !== '' )
     //    echo '<p>' . $message . '</p>';
 ?>
-        <div class="nav">
-          <ul class="menu-bar">
-            <a href="index.php?rt=excursions" id="link"><li class="left">DISCOVER KVARNER</li></a>
-            <li class="right"><a href="index.php?rt=authentication/login" class="button">Prijavi se</a></li>
-            <li class="right"><a href="index.php?rt=authentication/signup_index" class="button">registiraj se</a></li>
-          </ul>
-        </div>
+        
         <section class="signup">
             <div class="container">
                 <div class="signup-content">

@@ -61,7 +61,7 @@ class AuthenticationController extends BaseController
             {
                 // Dobar je. Ulogiraj ga.
                 $_SESSION['tempUser'] = serialize($user);
-                header( 'Location: index.php?rt=authentication/registered' );
+                header( 'Location: index.php' );  //PROMJENA
                 return;
             }
             else
@@ -222,7 +222,7 @@ class AuthenticationController extends BaseController
             if($user->has_registered === 1){
                 $_SESSION['user'] = $_SESSION['tempUser'];
                 unset($_SESSION['tempUser']);
-                header( 'Location: index.php?rt=search/index' );
+                header( 'Location: index.php' );
             }
 
             if(isset($_POST["again"]) && $_POST["again"] == 'again'){

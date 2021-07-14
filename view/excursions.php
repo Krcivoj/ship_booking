@@ -1,12 +1,6 @@
 <?php require_once __SITE_PATH . '/view/_header.php'; ?>
 
-<div class="nav">
-          <ul class="menu-bar">
-            <a href="index.php?rt=excursions" id="link"><li class="left">DISCOVER KVARNER</li></a>
-            <li class="right"><a href="index.php?rt=authentication/login" class="button">Prijavi se</a></li>
-            <li class="right"><a href="index.php?rt=authentication/signup_index" class="button">Registriraj se</a></li>
-          </ul>
-        </div>
+
 
         <section class="index" >
             <div class="center">
