@@ -711,8 +711,8 @@ label {
   padding-right: 5em;
 
   transition: all 0.2s ease-in;
-  }
 }
+
 
 
 /*------------------------------------*/
@@ -852,8 +852,6 @@ label {
   position: absolute;
   top: -45px;
   /*left:45px;*/
-
-  ;
 }
 
 .output2 p {
@@ -865,7 +863,7 @@ label {
   -moz-transform: rotate(-45deg);
   -ms-transform: rotate(-45deg);
   transform: rotate(-45deg);
-  margin-top:0;s
+  margin-top:0;
 }
 
 /*-----------------------------------------------------*/
