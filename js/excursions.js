@@ -1,6 +1,8 @@
 var place = $("#place");
 var loc = $("#location");
+var allShips;
 var ships;
+var zivotinje = false;
 
 place.on('input', function(){
     loc.val('');
@@ -21,7 +23,7 @@ place.on('keyup',function(e) {
             dataType: "json",
             success: function( data ) {
                 ships = data;
-                console.log(data);
+                allShips = ships;
                 prikazi();
             }
         } );
@@ -37,7 +39,7 @@ loc.on('keyup',function(e) {
             dataType: "json",
             success: function( data ) {
                 ships = data;
-                console.log(data);
+                allShips = ships;
                 prikazi();
             }
         } );
@@ -72,6 +74,37 @@ function prikazi(){
     }
 
 }
+
+function checkFunction()
+{
+    zivotinje = !zivotinje;
+    ships = [];
+    allShips.forEach((ship) => {
+        //if((zivotinje === true && ship.animal_friendly === '1') || (zivotinje === false && ship.animal_friendly === '1')|| (zivotinje === false && ship.animal_friendly === '0'))
+        if(!(zivotinje && !ship.animal_friendly))
+            ships.push(ship);
+        
+    });
+    prikazi();
+}
+
+$('#btn').on('click', () => {
+    djecaLow = $('#djecaLow p').html();
+    djecaHigh = $('#djecaHigh p').html();
+    odrasliLow = $('#odrasliLow p').html();
+    odrasliHigh = $('#odrasliHigh p').html();
+    zivotinje = $('.checkbox-con');
+
+    ships = [];
+    allShips.forEach((ship) => {
+        if(ship.price_kids >= djecaLow && ship.price_kids <= djecaHigh && ship.price_adults >= odrasliLow && ship.price_adults <= odrasliHigh){
+            if(!(zivotinje === true && ship.animal_friendly === 0))
+                ships.push(ship);
+        } 
+    });
+    prikazi()
+
+})
 
 /*<div class="rezultat">
               <a href="#" style="text-decoration: none;"><img class="brodic" src = ../ship_booking/assets/brod.png></img></a>       

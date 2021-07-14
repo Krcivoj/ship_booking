@@ -35,33 +35,33 @@
                         }
                   });
             </script>
-            <div class="ispod" style="  width: 100%; margin-top: 60px; margin-left: 20px; display: inline-block;">
-                    <div style="float:left"><p style="color:white; font-weight: bold; font-family: Garamond; font-size:1em;margin-top:0px;">ODRASLI</p></div>
-                    <div class="nivo" style="float: left;">
-                        <div class="slider">
+            <div class="ispod" style="  width: 100%; padding-left:10px; padding-top: 8px; margin-top: 60px; margin-left: 20px; display: inline-block;  background-color:#f5ddb0; opacity: 0.85; border-radius:10px">
+                    <div style="float:left"><p style="margin-top: 10px; color:white; font-weight: bold; font-family: Garamond; font-size:1em;opacity: 1;">ODRASLI</p></div>
+                    <div class="nivo" style="float: left; opacity: 1;">
+                        <div class="slider" style="background-color: #a9a9a9;">
                             <div class="track">
                             </div>
                         </div>
-                        <div class="output o0"> </div>
+                        <div class="output o0" id="odrasliLow"> </div>
                         <div class="thumb t0"></div>
 
-                        <div class="output o1"> </div>
+                        <div class="output o1" id="odrasliHigh"> </div>
                         <div class="thumb t1"></div>
                         <br/>
 
                    </div>
 
-                   <div class="nivo2" style="float: right;">
-                       <div class="slider2">
+                   <div class="nivo2" style="float: right; opacity: 1;">
+                       <div class="slider2" style="background-color: #a9a9a9;">
                            <div class="track2"></div>
                        </div>
-                       <div class="output2 o02"> </div>
+                       <div class="output2 o02" id="djecaLow"> </div>
                        <div class="thumb2 t02"></div>
 
-                       <div class="output2 o12"> </div>
+                       <div class="output2 o12" id="djecaHigh"> </div>
                        <div class="thumb2 t12"></div>
                   </div>
-                  <div style="float:right"><p style="color:white; font-weight: bold; font-family: Garamond; font-size:1em;">DJECA</p></div>
+                  <div style="float:right"><p style="margin-top: 8px; color:white; font-weight: bold; font-family: Garamond; font-size:1em;opacity: 1;">DJECA</p></div>
                </div>
 
                <script>
@@ -97,7 +97,7 @@
                     for (var i = 0; i < thumbs.length; i++) {
 
                       thumbs[i].style.width = thumbs[i].style.height = inputsRy.thumbWidth + "px";
-                      console.log(inputsRy.thumbWidth + "px");
+                      //console.log(inputsRy.thumbWidth + "px");
                       thumbs[i].style.borderWidth = inputsRy.thumbBorderWidth + "px";
                       thumbs[i].style.top = -(inputsRy.thumbWidth / 2 + inputsRy.thumbBorderWidth - inputsRy.trackHeight / 2) + "px";
                       thumbs[i].style.left = (inputsRy.theValue[i] - inputsRy.minRange) * rangeK - (thumbRealWidth / 2) + "px";
@@ -105,7 +105,7 @@
                     }
                     var outputs = document.querySelectorAll(".output");
                     for (var i = 0; i < outputs.length; i++) {
-                      console.log(thumbs[i])
+                      //console.log(thumbs[i])
                       outputs[i].style.width = outputs[i].style.height = outputs[i].style.lineHeight = outputs[i].style.left = inputsRy.outputWidth + "px";
                       outputs[i].style.top = -(Math.sqrt(2 * inputsRy.outputWidth * inputsRy.outputWidth) + inputsRy.thumbWidth / 2 - inputsRy.trackHeight / 2) +"px";
                       outputs[i].style.left = (inputsRy.theValue[i] - inputsRy.minRange) * rangeK - inputsRy.outputWidth / 2 + "px";
@@ -132,7 +132,7 @@
                     container.addEventListener("mousemove", function(evt) {
                       var mousePos = oMousePos(this, evt);
                       var theValue0 = (isDragging0) ? Math.round(mousePos.x / rangeK) + inputsRy.minRange : inputsRy.theValue[0];
-                      console.log(theValue0);
+                      //console.log(theValue0);
                       var theValue1 = (isDragging1) ? Math.round(mousePos.x / rangeK) + inputsRy.minRange : inputsRy.theValue[1];
 
                       if (isDragging0) {
@@ -205,7 +205,7 @@
                      for (var i = 0; i < thumbs2.length; i++) {
 
                        thumbs2[i].style.width = thumbs2[i].style.height = inputsRy2.thumbWidth + "px";
-                       console.log(inputsRy2.thumbWidth + "px");
+                       //console.log(inputsRy2.thumbWidth + "px");
                        thumbs2[i].style.borderWidth = inputsRy2.thumbBorderWidth + "px";
                        thumbs2[i].style.top = -(inputsRy2.thumbWidth / 2 + inputsRy2.thumbBorderWidth - inputsRy2.trackHeight / 2) + "px";
                        thumbs2[i].style.left = (inputsRy2.theValue[i] - inputsRy2.minRange) * rangeK2 - (thumbRealWidth2 / 2) + "px";
@@ -213,7 +213,7 @@
                      }
                      var outputs2 = document.querySelectorAll(".output2");
                      for (var i = 0; i < outputs2.length; i++) {
-                       console.log(thumbs2[i])
+                       //console.log(thumbs2[i])
                        outputs2[i].style.width = outputs2[i].style.height = outputs2[i].style.lineHeight = outputs2[i].style.left = inputsRy2.outputWidth + "px";
                        outputs2[i].style.top = -(Math.sqrt(2 * inputsRy2.outputWidth * inputsRy2.outputWidth) + inputsRy2.thumbWidth / 2 - inputsRy2.trackHeight / 2) + "px";
                        outputs2[i].style.left = (inputsRy2.theValue[i] - inputsRy2.minRange) * rangeK2 - inputsRy2.outputWidth / 2 + "px";
@@ -240,7 +240,7 @@
                      container2.addEventListener("mousemove", function(evt) {
                        var mousePos2 = oMousePos(this, evt);
                        var theValue02 = (isDragging02) ? Math.round(mousePos2.x / rangeK2) + inputsRy2.minRange : inputsRy2.theValue[0];
-                       console.log(theValue02);
+                       //console.log(theValue02);
                        var theValue12 = (isDragging12) ? Math.round(mousePos2.x / rangeK2) + inputsRy2.minRange : inputsRy2.theValue[1];
 
                        if (isDragging02) {
@@ -275,7 +275,7 @@
               <div class="ispod" style="width: 100%; margin-top: 20px; margin-left: 20px; display: inline-block;">
                  <div style="float:left;">
                    <label class="checkbox-con" ><font style="color:white;family-font: Garamond;font-weight:bold; font-size:1em;margin-top:10px;">ŽIVOTINJE NA BRODU</font>
-                    <input type="checkbox" checked="checked">
+                    <input type="checkbox"  onclick="checkFunction()">
                     <span class="checkmark" ></span>
                   </label>
                  </div>
@@ -293,6 +293,7 @@
                       <input type="radio" name="radio">
                       <span class="checkmark-radio"></span>
                     </label>
+                    <button id="btn" class="button-submit" style="color:black; font-weight:bold;">Filtriraj</button>
 
                  </div>
                </div>
