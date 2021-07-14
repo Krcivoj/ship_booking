@@ -33,7 +33,7 @@ class ShipController extends BaseController
 
         $code = '';
 		for( $i = 0; $i < 20; ++$i )
-			$reg_seq .= chr( rand(0, 25) + ord( 'a' ) );
+			$code .= chr( rand(0, 25) + ord( 'a' ) );
         $reservation->code= $code;
 
         //upit za dobivanje id-broda
