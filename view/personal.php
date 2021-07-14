@@ -11,7 +11,7 @@
               <p id="povijest-datum"  style=" margin-top:0;font-family:sans-serif; font-size:15px;color:#306a82;">Datum: 4</p>
               <p id="povijest-komentar"  style=" margin-top:0;font-family:sans-serif; font-size:15px;color:#306a82;"> Komentar: lijepo</p>
               <p id="povijest-ocijena-korisnika"  style=" margin-top:0;font-family:sans-serif; font-size:15px;color:#306a82;">Ocijena: 5</p>
-              <button id="1" class="rezervacija">REZERVIRAJ</button> 
+              
             </div>
           
           

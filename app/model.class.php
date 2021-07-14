@@ -145,6 +145,34 @@ abstract class Model implements JsonSerializable
 
 		return $arr;
     }
+    
+    public static function sumWhereMore( $column1, $value1, $column2, $value2, $aggregate )
+    {
+        // TODO:
+        // Funkcija vraća sumu celija $aggregate koje sadrži sve objekte iz tablice $table kojima u stupcu $column piše vrijednost $value.
+        $thisClassName = get_called_class();
+        try
+		{
+			$db = DB::getConnection();
+			$st = $db->prepare( 'SELECT SUM(ticket_adults), SUM(ticket_kids), SUM(ticket_baby) FROM ' . $thisClassName::$table . ' WHERE '. $column1 . '=:column1 AND ' . $column2 . '=:column2');
+			$st->execute( array( 'column1' => $value1, 'column2' => $value2 ) );
+		}
+		catch( PDOException $e ) { exit( 'PDO (where) error ' . $e->getMessage() ); }
+
+		$arr = array();
+		while( $row = $st->fetch() )
+		{
+			$obj = new $thisClassName();
+            foreach($thisClassName::$attributes as $attribut=>$type){
+                settype($row[$attribut], $type);
+                $obj->$attribut = $row[$attribut];
+            }
+            $obj->construct();
+            $arr[] = $obj;
+		}
+
+		return $arr;
+    }
 
     public static function whereOne( $column, $value )
     {

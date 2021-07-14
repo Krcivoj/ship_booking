@@ -3,7 +3,7 @@
 
 <div style="display:inline-block;margin-top: 30px;width:100%">
   <div class="forma" style="margin-left:15px; margin-right:15px;height:500px;">
-  <form action="index.php?rt=ship/reservation" style="margin-left: 20%; margin-right:20%;background-color:rgb(256,256, 256, 0.8); border-radius: 15px;padding:10px;">
+  <form method="POST" style="margin-left: 20%; margin-right:20%;background-color:rgb(256,256, 256, 0.8); border-radius: 15px;padding:10px;">
     
       <div style="margin-top:10px;margin-left:15%;width:100%">
         <label for="ime" style="position:relative; color: #056fa1; height:27px; font-family: 'Exo 2', sans-serif; font-size: 20px;">IME:</label>
@@ -25,35 +25,40 @@
 
     <div style="display: inline-block;width:100%;">
       <div style="float:left;width:30%">
-        <label style="position: relative; color: #056fa1; float:left; height:27px;font-family:  'Exo 2', sans-serif; font-size: 15px;" for="opcija">ODRASLI:</label>
-        <input type="number" class="kol" name="kolicina" min="0" max="50"/>
+        <label style="margin-left:20px;padding: 0px; position: relative; color: #056fa1; float:left; height:27px;font-family:  'Exo 2', sans-serif; font-size: 15px;" for="opcija">ODRASLI:</label>
+        <input style="width:15%" type="number" class="kol" name="adults" min="0" max="50" value="0"/>
       </div>
       <div style="float:left;width:30%">
-        <label style="position: relative; color: #056fa1; float:left; height:27px;font-family: 'Exo 2', sans-serif; font-size: 15px;" for="opcija">DJECA:</label>
-        <input type="number" class="kol" name="kolicina" min="0" max="50"/>
+        <label style="padding: 0px; position: relative; color: #056fa1; float:left; height:27px;font-family: 'Exo 2', sans-serif; font-size: 15px;" for="opcija">DJECA:</label>
+        <input style="width:15%" type="number" class="kol" name="kids" min="0" max="50" value="0"/>
       </div>
-      <div style="float:left;width:40%">
-        <label style="position: relative; color: #056fa1; float:left; height:27px;font-family:  'Exo 2', sans-serif; font-size: 15px;" for="opcija">BEBE:</label>
-        <input type="number" class="kol" name="kolicina" min="0" max="50"/>
+      <div style="float:left;width:30%">
+        <label style="padding: 0px; position: relative; color: #056fa1; float:left; height:27px;font-family:  'Exo 2', sans-serif; font-size: 15px;" for="opcija">BEBE:</label>
+        <input  style="width:15%" type="number" class="kol" name="babies" min="0" max="50" value="0" />
       </div>
     </div>
     <div style="display: inline-block;width:100%;">
       <div style="float:left;width:30%">
-        <label style="position: relative; color: #056fa1; float:left; height:27px;font-family:  'Exo 2', sans-serif; font-size: 15px;" for="opcija">MESNI:</label>
-        <input type="number" class="kol" name="kolicina" min="0" max="50"/>
+        <label style="margin-left:20px;padding: 0px; position: relative; color: #056fa1; float:left; height:27px;font-family:  'Exo 2', sans-serif; font-size: 15px;" for="opcija">MESNI:</label>
+        <input  style="width:15%" type="number" class="kol" name="meat" min="0" max="50" value="0"/>
       </div>
       <div style="float:left;width:30%">
-        <label style="position: relative; color: #056fa1; float:left; height:27px;font-family: 'Exo 2', sans-serif; font-size: 15px;" for="opcija">RIBLJI:</label>
-        <input type="number" class="kol" name="kolicina" min="0" max="50"/>
+        <label style="padding: 0px; position: relative; color: #056fa1; float:left; height:27px;font-family: 'Exo 2', sans-serif; font-size: 15px;" for="opcija">RIBLJI:</label>
+        <input style="width:15%" type="number" class="kol" name="fish" min="0" max="50" value="0"/>
       </div>
-      <div style="float:left;width:40%">
-        <label style="position: relative; color: #056fa1; float:left; height:27px;font-family:  'Exo 2', sans-serif; font-size: 15px;" for="opcija">VEGE:</label>
-        <input type="number" class="kol" name="kolicina" min="0" max="50"/>
+      <div style="float:left;width:30%">
+        <label style="padding: 0px; position: relative; color: #056fa1; float:left; height:27px;font-family:  'Exo 2', sans-serif; font-size: 15px;" for="opcija">VEGE:</label>
+        <input  style="width:15%" type="number" class="kol" name="vege" min="0" max="50" value="0"/>
       </div>
     </div>
     <input type="submit" value="rezerviraj" class="button-submit" style="margin-left:35%;margin-bottom:10px;"/>
     </form>
    </div>
 </div>
+
+<?php 
+    if( $message !== '' )
+        echo '<p style="color:red; font-family: Garamond; font-size: 2em;">' . $message . '</p>';
+?>
 
 <?php require_once __SITE_PATH . '/view/_footer.php'; ?>

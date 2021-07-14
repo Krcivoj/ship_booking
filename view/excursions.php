@@ -306,4 +306,10 @@
 
         <div class="popis"></div>
           <script src="<?php echo __SITE_URL; ?>/js/excursions.js" ></script>
+        </div>
+          
+          
+        
+          <script src="<?php echo __SITE_URL; ?>/js/excursions.js" ></script>
+        </div>
 <?php require_once __SITE_PATH . '/view/_footer.php'; ?>

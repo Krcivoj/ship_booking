@@ -58,15 +58,15 @@ function prikazi(){
         let cijena = $('<p id="rezultat-cijena"  style=" margin-top:10px;font-family:sans-serif; font-size:15px;color:#306a82;">Cijena: '
         + ships[i].price_kids+'/'+ships[i].price_adults +'kn</p>')
         brod.append(cijena);
-        let polazak = $('<p id="rezultat-polazak"  style=" margin-top:0;font-family:sans-serif; font-size:15px;color:#306a82;">Polazak: '+ ships[0].start_place+'</p>')
+        let polazak = $('<p id="rezultat-polazak"  style=" margin-top:0;font-family:sans-serif; font-size:15px;color:#306a82;">Polazak: '+ ships[i].start_place+'</p>')
         brod.append(polazak);
         let trajanje = $(' <p id="rezultat-trajanje"  style=" margin-top:0;font-family:sans-serif; font-size:15px;color:#306a82;">Trajanje: '+
-        ships[0].departure_time.substring(0,5)+' - '+ships[0].arrival_time.substring(0,5)+'</p>');
+        ships[i].departure_time.substring(0,5)+' - '+ships[i].arrival_time.substring(0,5)+'</p>');
         brod.append(trajanje);
         let ocijena =$('<p id="rezultat-ocijena"  style=" margin-top:0;font-family:sans-serif; font-size:15px;color:#306a82;">Ocijena: '+
-        ships[0].rank+'</p>');
-        let rezerviraj = $('<form method="post" action="index.php?rt=ship/reservation&name='+
-        ships[0].name + '"><button id="1" class="rezervacija" type="submit">REZERVIRAJ</button></form> ');
+        ships[i].rank+'</p>');
+        let rezerviraj = $('<form method="post" action="index.php?rt=ship/reservation_make&name='+
+        ships[i].name + '"><button id="1" class="rezervacija" type="submit">REZERVIRAJ</button></form> ');
         brod.append(rezerviraj);
         popis.append(brod);
     }
@@ -83,4 +83,4 @@ function prikazi(){
               <form method="post" action="index.php?rt=ship/reservation">
               <button id="1" class="rezervacija" type="submit">REZERVIRAJ</button>
               </form> 
-            </div>*/
+            </div>*/ 

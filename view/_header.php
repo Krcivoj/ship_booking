@@ -35,8 +35,8 @@
                 echo '<li class="right"><a href="index.php?rt=authentication/logout" class="button">Odjava</a></li>';
                 echo '<li class="right">Pozdrav, ' . $user->name . '</li>';
             }
-            
-            ?>
+
+            ?>    
         </ul>
     </div>
 
