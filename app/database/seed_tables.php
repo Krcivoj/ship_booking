@@ -51,25 +51,28 @@ function seed_table_ships()
 													   start_place, start_lat, 
 													   start_lon, animal_friendly) 
 							VALUES (:id_owner, :name, :capacity, 
-									200, 350,
+									:price_kids, :price_adults,
 									:locations, :description,
 									:departure_time, :arrival_time,
 									:start_place, :start_lat,
 									:start_lon, :animal_friendly )' );
 
 		$st->execute( array('id_owner' => 2, 'name' => 'Marlena', 'capacity' => 50,
+							':price_kids' => 120, ':price_adults' => 220,
 							'locations' => 'Plavnik, Uvala Krušija, Ljubavna špilja, Zlatna plaža - Stara Baška',
 							'description' => 'Provedite svoj dan kupajući se na najljepšim lokacijama u okolini Krka. Lokacije koje je moguće posjetiti jedino brodom! Zabava na brodu i izvan njega zagarantirana.', 
 							'departure_time' => '11:00:00', 'arrival_time' => '17:00:00',
 							'start_place' => 'Punat', 'start_lat' => 45.0088199647, 
 							'start_lon' => 14.6240041706, 'animal_friendly' => 0 ) ); // mirko
 		$st->execute( array('id_owner' => 2, 'name' => 'Sea Dream', 'capacity' => 30,
+							':price_kids' => 175, ':price_adults' => 290,
 							'locations' => 'Plavnik, Uvala Krušija, Mali Plavnik, Cres',
 							'description' => 'Pridružite nam se na avanturističkom putovanju na četiri otoka i istražite prekrasnu prirodu oko sebe. Povedite obitelj i prijatelje sa sobom i uronite u mediteranski duh. Plivajte i osunčajte svoj odmor i podignite svoj odmor na potpuno novu razinu!', 
 							'departure_time' => '09:30:00', 'arrival_time' => '18:00:00',
 							'start_place' => 'Krk', 'start_lat' => 45.02583, 
 							'start_lon' =>  14.57306,'animal_friendly' => 1 ) );
 		$st->execute( array('id_owner' => 2, 'name' => 'Nemo & Dora', 'capacity' => 40,
+							':price_kids' => 150, ':price_adults' =>300,
 							'locations' => 'Plavnik, Uvala Krušija, Ljubavna špilja, Otok Sveti Grgur',
 							'description' => 'Da Vaš odmor bude potpun, nudimo Vam jedinstveno iskustvo tradicionalnog ulova ribe uz obilazak poznatih lokacija. Ispraćeni zvukovima galeba krenut ćemo ploviti
 							plavetnilom Kvarnerića, gledajući prekrasne krajolike naše obale. Uz riblje zagriske, upoznat ćete ulov ribe kako to rade krčki ribari - povlačnom mrežom. Nakon ulova i prebiranja ribe,
@@ -78,6 +81,7 @@ function seed_table_ships()
 							'start_place' => 'Krk', 'start_lat' => 45.02583, 
 							'start_lon' =>  14.57306, 'animal_friendly' =>1 ) );
 		$st->execute( array('id_owner' => 3, 'name' => 'Veglia', 'capacity' => 80,
+							':price_kids' => 250, ':price_adults' => 420,
 							'locations' => 'Otok Sveti Grgur, Goli otok, Rajska plaža - Rab',
 							'description' => 'Nudimo jedinstveni izlet, s potpuno drugačijom rutom od drugih izleta. Vodimo Vas u raj, na poznatu Rajsku plažu na otoku Rabu.
 							No, prije ćemo pristati na predivnom tihom otočiću Sv. Grgur i zloglasni Goli otok. Budite drugačiji i pridružite nam se na putovanju!', 

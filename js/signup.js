@@ -12,7 +12,7 @@ $("#name").on('input', function(){
         $(this).css('border', 'none');
         $(this).css('border-bottom', '1px solid #999');
     }
-})
+});
 
 $("#surname").on('input', function(){
     surname =  $(this).val().match(/^[a-zA-Z-' ]{1,50}$/) !== null;
@@ -22,7 +22,7 @@ $("#surname").on('input', function(){
         $(this).css('border', 'none');
         $(this).css('border-bottom', '1px solid #999');
     }
-})
+});
 
 $("#email").on('input', function(){
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -32,8 +32,8 @@ $("#email").on('input', function(){
     else{
         $(this).css('border', 'none');
         $(this).css('border-bottom', '1px solid #999');
-    }
-})
+   }
+});
 
 $("#password").on('input', function(){
     re = /^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]{8,})$/
@@ -44,7 +44,7 @@ $("#password").on('input', function(){
         $(this).css('border', 'none');
         $(this).css('border-bottom', '1px solid #999');
     }
-})
+});
 
 $("#repeatPassword").on('input', function(){
     repeatPassword =  ($(this).val() === $("#password").val());
@@ -54,7 +54,7 @@ $("#repeatPassword").on('input', function(){
         $(this).css('border', 'none');
         $(this).css('border-bottom', '1px solid #999');
     }
-})
+});
 
 function checkInput(){
     let ans = !(nname && surname && email && password && repeatPassword);
