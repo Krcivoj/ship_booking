@@ -307,8 +307,22 @@
 
             </div>
         </section>
-        <script src="<?php echo __SITE_URL; ?>/js/excursions.js" ></script>
+        
 
 
-        <div class="popis"></div>
+        <div class="popis">
+          <div class="rezultat">
+              <a href="#" style="text-decoration: none;"><img class="brodic" src = ../ship_booking/assets/brod.png></img></a>       
+              <p id="rezultat-ime" style=" font-family:'Rock Salt'; font-weight: bold; font-size:20px;color:black;">MARLENA</p>
+              <p id="rezultat-cijena"  style=" margin-top:10px;font-family:sans-serif; font-size:15px;color:#306a82;">Cijena: 230/340 kn</p>
+              <p id="rezultat-polazak"  style=" margin-top:0;font-family:sans-serif; font-size:15px;color:#306a82;">Polazak: Krk</p>
+              <p id="rezultat-trajanje"  style=" margin-top:0;font-family:sans-serif; font-size:15px;color:#306a82;">Trajanje: 10-17h</p>
+              <p id="rezultat-ociena"  style=" margin-top:0;font-family:sans-serif; font-size:15px;color:#306a82;">Ocijena: 5</p>
+
+            </div>
+          
+          
+        
+          <script src="<?php echo __SITE_URL; ?>/js/excursions.js" ></script>
+        </div>
 <?php require_once __SITE_PATH . '/view/_footer.php'; ?>

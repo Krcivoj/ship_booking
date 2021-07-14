@@ -999,3 +999,30 @@ label {
 	border-radius: 50%;
 	background: white;
 }
+
+/*-------------------------------------------*/
+/*dio za prikazivanje brodova*/
+.popis{
+  width:100%;
+  margin: 30px;
+  display: inline-block;
+}
+.rezultat{
+  float:left;
+  margin:10px;
+  height: 150px;
+  width: 20%;
+  margin-left: 20px;
+  margin-right: 20px;
+  background-color:  rgb(245, 221, 176, 0.8);
+  border-radius: 10px;
+  text-align: center;
+}
+.brodic{
+  position:relative;
+  width:50px;
+  height:50px;  /*moze s epovecat i u drugom redu dodat zvjezdice*/
+  float:left;
+  margin-left: 20px;
+  margin-top: 10px;
+}
