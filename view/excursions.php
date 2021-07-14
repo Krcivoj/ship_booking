@@ -16,12 +16,12 @@
 
                   <div class="l">
                     <label for="place">MJESTO POLASKA</label>
-                    <input id="place" type="text" class="cool"/>
+                    <input id="place" type="text" class="cool" style="color:black; font-family: Garamond; font-weight:bold"/>
                   </div>
 
                   <div class="r">
                     <label for="location">LOKACIJA KOJU ŽELIM POSJETITI</label>
-                    <input id="location" type="text" class="cool"/>
+                    <input id="location" type="text" class="cool" style="color:black; font-family: Garamond; font-weight:bold"/>
                   </div>
                 </div>
                 <script>
@@ -35,15 +35,15 @@
                         }
                   });
             </script>
-            <div class="ispod" style="  width: 100%; padding-left:10px; padding-top: 8px; margin-top: 60px; margin-left: 20px; display: inline-block;  background-color:#f5ddb0; opacity: 0.85; border-radius:10px">
-                    <div style="float:left"><p style="margin-top: 10px; color:white; font-weight: bold; font-family: Garamond; font-size:1em;opacity: 1;">ODRASLI</p></div>
-                    <div class="nivo" style="float: left; opacity: 1;">
+            <div class="ispod" style="  width: 100%; padding-left:10px; padding-top: 8px; margin-top: 60px; margin-left: 20px; display: inline-block;  background-color:#f5ddb0; opacity: 0.85; border-radius:10px;">
+                    <div style="float:left"><p style="margin-top: 8px; color:black; font-weight: bold; font-family: Garamond; font-size:1em;opacity: 1;">ODRASLI</p></div>
+                    <div class="nivo" style="margin-top:14px;float: left; opacity: 1;">
                         <div class="slider" style="background-color: #a9a9a9;">
                             <div class="track">
                             </div>
                         </div>
-                        <div class="output o0" id="odrasliLow"> </div>
-                        <div class="thumb t0"></div>
+                        <div class="output o0" id="odrasliLow" style="border: #a9a9a9;"> </div>
+                        <div class="thumb t0"></div> 
 
                         <div class="output o1" id="odrasliHigh"> </div>
                         <div class="thumb t1"></div>
@@ -51,7 +51,7 @@
 
                    </div>
 
-                   <div class="nivo2" style="float: right; opacity: 1;">
+                   <div class="nivo2" style="margin-top:14px;float: right; opacity: 1;">
                        <div class="slider2" style="background-color: #a9a9a9;">
                            <div class="track2"></div>
                        </div>
@@ -61,7 +61,7 @@
                        <div class="output2 o12" id="djecaHigh"> </div>
                        <div class="thumb2 t12"></div>
                   </div>
-                  <div style="float:right"><p style="margin-top: 8px; color:white; font-weight: bold; font-family: Garamond; font-size:1em;opacity: 1;">DJECA</p></div>
+                  <div style="float:right"><p style="margin-top: 8px; color:black; font-weight: bold; font-family: Garamond; font-size:1em;opacity: 1;">DJECA</p></div>
                </div>
 
                <script>
@@ -272,24 +272,24 @@
                      }, false);
                </script>
 
-              <div class="ispod" style="width: 100%; margin-top: 20px; margin-left: 20px; display: inline-block;">
-                 <div style="float:left;">
-                   <label class="checkbox-con" ><font style="color:white;family-font: Garamond;font-weight:bold; font-size:1em;margin-top:10px;">ŽIVOTINJE NA BRODU</font>
-                    <input type="checkbox"  onclick="checkFunction()">
+              <div class="ispod" style="width: 100%; padding-top:20px; height:auto; margin-top: 20px; margin-left: 20px; display: inline-block; background-color:blanchedalmond; opacity:0.8;border-radius:10px;">
+                 <div style="display:inline-block; ">
+                   <label class="checkbox-con" font style="color:black;family-font: Garamond;font-weight: bold; font-size:1em;margin-top:10px;">ŽIVOTINJE NA BRODU</font>
+                    <input type="checkbox" style="margin-top: 10px;"  onclick="checkFunction()">
                     <span class="checkmark" ></span>
                   </label>
                  </div>
                  <div style="float:right; display:inline-block;margin-right:10%;">
-                   <p style="color:white; font-weight: bold; font-family: Garamond; float:left; font-size:1em;margin-top:0;">TRAJANJE:</p>
-                   <label class="radio-con" style="float:left;"> &lt 3h
+                   <p style="padding-top:6px;color:black; font-weight: bold; font-family: Garamond; float:left; font-size:1em;margin-top:0;">TRAJANJE:</p>
+                   <label class="radio-con" style="float:left; color:black;font-size:1.25em;"> &lt 3h
                       <input type="radio" name="radio">
                       <span class="checkmark-radio"></span>
                     </label>
-                    <label class="radio-con" style="float:left;"> &lt 6h
+                    <label class="radio-con" style="float:left; color:black;font-size:1.25em;"> &lt 6h
                       <input type="radio" name="radio">
                       <span class="checkmark-radio"></span>
                     </label>
-                    <label class="radio-con" style="float:left;margin-right:20px;"> &gt 6h
+                    <label class="radio-con" style="float:left;margin-right:20px; color:black; font-weight: bold; font-size:1.25em;"> &gt 6h
                       <input type="radio" name="radio">
                       <span class="checkmark-radio"></span>
                     </label>
