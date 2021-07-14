@@ -25,10 +25,18 @@
         <ul class="menu-bar">
             <a href="index.php?rt=excursions" id="link"><li class="left">DISCOVER KVARNER</li></a>
 
+            <?php
+            if(!isset($_SESSION['user'])){
+                echo '<li class="right"><a href="index.php?rt=authentication/login" class="button">Prijavi se</a></li>';
+                echo '<li class="right"><a href="index.php?rt=authentication/signup_index" class="button">Registriraj se</a></li>';
+            }
+            else{
+                $user = unserialize($_SESSION['user']);
+                echo '<li class="right"><a href="index.php?rt=authentication/logout" class="button">Odjava</a></li>';
+                echo '<li class="right">Pozdrav, ' . $user->name . '</li>';
+            }
             
-            <li class="right"><a href="index.php?rt=authentication/login" class="button">Prijavi se</a></li>
-            <li class="right"><a href="index.php?rt=authentication/signup_index" class="button">Registriraj se</a></li>
-    
+            ?>
         </ul>
     </div>
 
