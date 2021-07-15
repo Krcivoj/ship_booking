@@ -12,16 +12,16 @@
                 </div>
                 <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 
-                <div class="wrap">
+                <div class="wrap" style="width: 100%;">
 
                   <div class="l">
                     <label for="place">MJESTO POLASKA</label>
                     <input id="place" type="text" class="cool" style="color:black; font-family: Garamond; font-weight:bold"/>
                   </div>
 
-                  <div class="r">
-                    <label for="location">LOKACIJA KOJU ŽELIM POSJETITI</label>
-                    <input id="location" type="text" class="cool" style="color:black; font-family: Garamond; font-weight:bold"/>
+                  <div class="r" style="width: 40%;">
+                    <label for="location" style="position: absolute; margin-left:30px;">LOKACIJA KOJU ŽELIM POSJETITI</label>
+                    <input id="location" type="text" class="cool" style="color:black; font-family: Garamond; font-weight:bold; margin-right:20px; margin-left:20px; padding-left: 10px;"/>
                   </div>
                 </div>
                 <script>
@@ -272,7 +272,7 @@
                      }, false);
                </script>
 
-              <div class="ispod" style="width: 100%; padding-top:20px; height:auto; margin-top: 20px; margin-left: 20px; display: inline-block; background-color:blanchedalmond; opacity:0.8;border-radius:10px;">
+              <div class="ispod" style="width: 100%; padding-top:20px; height:auto; margin-top: 20px; margin-left: 20px; padding-left:10px; display: inline-block; background-color:#f5ddb0; opacity:0.85;border-radius:10px;">
                  <div style="display:inline-block; ">
                    <label class="checkbox-con" font style="color:black;family-font: Garamond;font-weight: bold; font-size:1em;margin-top:10px;">ŽIVOTINJE NA BRODU</font>
                     <input type="checkbox" style="margin-top: 10px;"  onclick="checkFunction()">

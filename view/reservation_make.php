@@ -2,7 +2,7 @@
 
 
 <div style="display:inline-block;margin-top: 30px;width:100%">
-  <div class="forma" style="margin-left:15px; margin-right:15px;height:500px;">
+  <div class="forma" style="margin-left:15px; margin-right:15px;">
   <form method="POST" style="margin-left: 20%; margin-right:20%;background-color:rgb(256,256, 256, 0.8); border-radius: 15px;padding:10px;">
     
       <div style="margin-top:10px;margin-left:15%;width:100%">
@@ -51,14 +51,14 @@
         <input  style="width:15%" type="number" class="kol" name="vege" min="0" max="50" value="0"/>
       </div>
     </div>
+<?php 
+    if( $message !== '' )
+        echo '<p style="color:red; font-family: Garamond; font-size: 1.25em; margin-left: 20px; margin: 10px;">' . $message . '</p>';
+?>
     <input type="submit" value="rezerviraj" class="button-submit" style="margin-left:35%;margin-bottom:10px;"/>
     </form>
    </div>
 </div>
 
-<?php 
-    if( $message !== '' )
-        echo '<p style="color:red; font-family: Garamond; font-size: 2em;">' . $message . '</p>';
-?>
 
 <?php require_once __SITE_PATH . '/view/_footer.php'; ?>
