@@ -33,7 +33,7 @@
             else{
                 $user = unserialize($_SESSION['user']);
                 echo '<li class="right"><a href="index.php?rt=authentication/logout" class="button">Odjava</a></li>';
-                echo '<li class="right" style="margin-top:8px;">Pozdrav, ' . $user->name . '</li>';
+                echo '<li class="right"><a href="index.php?rt=user" class="button">Pozdrav, ' . $user->name . '</a></li>';
             }
 
             ?>    

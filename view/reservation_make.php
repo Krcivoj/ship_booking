@@ -29,11 +29,11 @@
         <input style="width:15%" type="number" class="kol" name="adults" min="0" max="50" value="0"/>
       </div>
       <div style="float:left;width:30%">
-        <label style="padding: 0px; position: relative; color: #056fa1; float:left; height:27px;font-family: 'Exo 2', sans-serif; font-size: 15px;" for="opcija">DJECA:</label>
+        <label style="padding: 0px; position: relative; color: #056fa1; float:left; height:27px;font-family: 'Exo 2', sans-serif; font-size: 15px;" for="opcija">DJECA (3-12 god.):</label>
         <input style="width:15%" type="number" class="kol" name="kids" min="0" max="50" value="0"/>
       </div>
       <div style="float:left;width:30%">
-        <label style="padding: 0px; position: relative; color: #056fa1; float:left; height:27px;font-family:  'Exo 2', sans-serif; font-size: 15px;" for="opcija">BEBE:</label>
+        <label style="padding: 0px; position: relative; color: #056fa1; float:left; height:27px;font-family:  'Exo 2', sans-serif; font-size: 15px;" for="opcija">BEBE (&lt 3 god.):</label>
         <input  style="width:15%" type="number" class="kol" name="babies" min="0" max="50" value="0" />
       </div>
     </div>

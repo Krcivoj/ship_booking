@@ -36,7 +36,7 @@
                   });
             </script>
             <div class="ispod" style="  width: 100%; padding-left:10px; padding-top: 8px; margin-top: 60px; margin-left: 20px; display: inline-block;  background-color:#f5ddb0; opacity: 0.85; border-radius:10px;">
-                    <div style="float:left"><p style="margin-top: 8px; color:black; font-weight: bold; font-family: Garamond; font-size:1em;opacity: 1;">ODRASLI</p></div>
+                    <div style="float:left"><p style="margin-top: 8px; margin-right: 8px; color:black; font-weight: bold; font-family: Garamond; font-size:1em;opacity: 1;">ODRASLI</p></div>
                     <div class="nivo" style="margin-top:14px;float: left; opacity: 1;">
                         <div class="slider" style="background-color: #a9a9a9;">
                             <div class="track">
@@ -61,7 +61,7 @@
                        <div class="output2 o12" id="djecaHigh"> </div>
                        <div class="thumb2 t12"></div>
                   </div>
-                  <div style="float:right"><p style="margin-top: 8px; color:black; font-weight: bold; font-family: Garamond; font-size:1em;opacity: 1;">DJECA</p></div>
+                  <div style="float:right"><p style="margin-top: 8px; margin-right: 8px; color:black; font-weight: bold; font-family: Garamond; font-size:1em;opacity: 1;">DJECA</p></div>
                </div>
 
                <script>
@@ -73,7 +73,7 @@
                       thumbWidth: 18, // thumb width
                       thumbBorderWidth: 4,
                       trackHeight: 4,
-                      theValue: [150, 320] // theValue[0] < theValue[1]
+                      theValue: [100, 500] // theValue[0] < theValue[1]
                     };
                     var isDragging0 = false;
                     var isDragging1 = false;
@@ -181,7 +181,7 @@
                        thumbWidth: 18, // thumb width
                        thumbBorderWidth: 4,
                        trackHeight: 4,
-                       theValue: [150, 320] // theValue[0] < theValue[1]
+                       theValue: [100, 500] // theValue[0] < theValue[1]
                      };
                      var isDragging02 = false;
                      var isDragging12 = false;
@@ -282,15 +282,15 @@
                  <div style="float:right; display:inline-block;margin-right:10%;">
                    <p style="padding-top:6px;color:black; font-weight: bold; font-family: Garamond; float:left; font-size:1em;margin-top:0;">TRAJANJE:</p>
                    <label class="radio-con" style="float:left; color:black;font-size:1.25em;"> &lt 3h
-                      <input type="radio" name="radio">
+                      <input type="radio" name="radio" value=1>
                       <span class="checkmark-radio"></span>
                     </label>
                     <label class="radio-con" style="float:left; color:black;font-size:1.25em;"> &lt 6h
-                      <input type="radio" name="radio">
+                      <input type="radio" name="radio" value=2>
                       <span class="checkmark-radio"></span>
                     </label>
                     <label class="radio-con" style="float:left;margin-right:20px; color:black; font-weight: bold; font-size:1.25em;"> &gt 6h
-                      <input type="radio" name="radio">
+                      <input type="radio" name="radio" value=3>
                       <span class="checkmark-radio"></span>
                     </label>
                     <button id="btn" class="button-submit" style="color:black; font-weight:bold;">Filtriraj</button>

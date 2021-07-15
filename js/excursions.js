@@ -94,12 +94,25 @@ $('#btn').on('click', () => {
     odrasliLow = $('#odrasliLow p').html();
     odrasliHigh = $('#odrasliHigh p').html();
     zivotinje = $('.checkbox-con');
-
+    radio =$('input[name="radio"]:checked').val();
     ships = [];
     allShips.forEach((ship) => {
+        pocetak= parseInt(ship.departure_time.substring(0,2))+(parseInt(ship.departure_time.substring(3,5))/60);
+        kraj= parseInt(ship.arrival_time.substring(0,2))+(parseInt(ship.arrival_time.substring(3,5))/60);
         if(ship.price_kids >= djecaLow && ship.price_kids <= djecaHigh && ship.price_adults >= odrasliLow && ship.price_adults <= odrasliHigh){
-            if(!(zivotinje === true && ship.animal_friendly === 0))
+            if(!(zivotinje === true && ship.animal_friendly === 0)){
+                if(radio){
+                    if(radio==='1' && kraj-pocetak <= 3)
+                        ships.push(ship);
+                    else if(radio==='2' && kraj-pocetak <= 6)
+                        ships.push(ship);
+                    else if(radio==='3' && kraj-pocetak > 6)
+                        ships.push(ship);
+                }
+                else
                 ships.push(ship);
+            }
+                
         } 
     });
     prikazi()

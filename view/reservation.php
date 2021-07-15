@@ -1,59 +1,46 @@
-<?php require_once __SITE_PATH . '/view/_header.php'; ?>
-
-
-<div style="display:inline-block;margin-top: 30px;width:100%">
-  <div class="forma" style="margin-left:15px; margin-right:15px;height:500px;">
-  <form method="POST" style="margin-left: 20%; margin-right:20%;background-color:rgb(256,256, 256, 0.8); border-radius: 15px;padding:10px;">
-    
-      <div style="margin-top:10px;margin-left:15%;width:100%">
-        <label for="ime" style="position:relative; color: #056fa1; height:27px; font-family: 'Exo 2', sans-serif; font-size: 20px;">IME:</label>
-        <input style="margin-bottom:5px;width:40%"type="text" id="ime" name="ime" placeholder="Vaše ime..."/> 
-      </div>
-      
-        <div style="width:100%;margin-top:10px;margin-left:15%;">
-          <label style="position: relative; color: #056fa1; height:27px;font-family:'Exo 2', sans-serif; font-size: 20px;" for="prezime">PREZIME:</label>
-          <input style="margin-bottom:5px;width:40%" type="text" id="prezime" name="prezime" placeholder="Vaše prezime..."/>
-        </div>
-    <div style="width:100%;margin-top:10px;margin-left:15%;">
-      <label for="mail"  style="position: relative; color: #056fa1;height:27px;font-family: 'Exo 2', sans-serif; font-size: 20px;">E-MAIL:</label>
-      <input style="margin-bottom:5px;width:40%" type="text" id="mail" name="mail" placeholder="Vaš email..."/>
-    </div>
-    <div style="width:100%;margin-top:10px;margin-left:15%;margin-bottom:20px;">
-      <label  style="position: relative;color: #056fa1;height:27px;font-family:  'Exo 2', sans-serif; font-size: 20px;" for="datum">DATUM:</label>
-      <input type="date" id="datum" name="datum" value="2021-07-01" min="2019-01-01" max="2021-12-31" style="margin-bottom:5px;"/>
-    </div>
-
-    <div style="display: inline-block;width:100%;">
-      <div style="float:left;width:30%">
-        <label style="padding: 0px; position: relative; color: #056fa1; float:left; height:27px;font-family:  'Exo 2', sans-serif; font-size: 15px;" for="opcija">ODRASLI:</label>
-        <input style="width:15%" type="number" class="kol" name="adults" min="0" max="50" value="0"/>
-      </div>
-      <div style="float:left;width:30%">
-        <label style="padding: 0px; position: relative; color: #056fa1; float:left; height:27px;font-family: 'Exo 2', sans-serif; font-size: 15px;" for="opcija">DJECA:</label>
-        <input style="width:15%" type="number" class="kol" name="kids" min="0" max="50" value="0"/>
-      </div>
-      <div style="float:left;width:30%">
-        <label style="padding: 0px; position: relative; color: #056fa1; float:left; height:27px;font-family:  'Exo 2', sans-serif; font-size: 15px;" for="opcija">BEBE:</label>
-        <input  style="width:15%" type="number" class="kol" name="babies" min="0" max="50" value="0" />
-      </div>
-    </div>
-    <div style="display: inline-block;width:100%;">
-      <div style="float:left;width:30%">
-        <label style="padding: 0px; position: relative; color: #056fa1; float:left; height:27px;font-family:  'Exo 2', sans-serif; font-size: 15px;" for="opcija">MESNI:</label>
-        <input  style="width:15%" type="number" class="kol" name="meat" min="0" max="50" value="0"/>
-      </div>
-      <div style="float:left;width:30%">
-        <label style="padding: 0px; position: relative; color: #056fa1; float:left; height:27px;font-family: 'Exo 2', sans-serif; font-size: 15px;" for="opcija">RIBLJI:</label>
-        <input style="width:15%" type="number" class="kol" name="fish" min="0" max="50" value="0"/>
-      </div>
-      <div style="float:left;width:30%">
-        <label style="padding: 0px; position: relative; color: #056fa1; float:left; height:27px;font-family:  'Exo 2', sans-serif; font-size: 15px;" for="opcija">VEGE:</label>
-        <input  style="width:15%" type="number" class="kol" name="vege" min="0" max="50" value="0"/>
-      </div>
-    </div>
-    <input type="submit" value="rezerviraj" class="button-submit" style="margin-left:35%;margin-bottom:10px;"/>
-    </form>
-   </div>
+<div class="rezultat">
+      <a href="#" style="text-decoration: none;"><img class="brodic" src = ../ship_booking/assets/brod.png></img></a>       
+      <p id="povijest-ime" style=" font-family:'Rock Salt'; font-weight: bold; font-size:20px;color:black;"><?php echo $reservation->name; ?></p>
+      <p id="povijest-karte-odrasli"  style=" margin-top:5px;font-family:sans-serif; font-size:15px;color:#306a82;">Odrasli: <?php echo $reservation->ticket_adults; ?></p>
+      <p id="povijest-karte-djeca"  style=" margin-top:5px;font-family:sans-serif; font-size:15px;color:#306a82;">Djeca: <?php echo $reservation->ticket_kids; ?></p>
+      <p id="povijest-karte-bebe"  style=" margin-top:5px;font-family:sans-serif; font-size:15px;color:#306a82;">Bebe: <?php echo $reservation->ticket_baby; ?></p>
+      <p id="povijest-meso"  style=" margin-top:5px;font-family:sans-serif; font-size:15px;color:#306a82;">Mesni meni: <?php echo $reservation->menu_meat; ?></p>
+      <p id="povijest-riba"  style=" margin-top:5px;font-family:sans-serif; font-size:15px;color:#306a82;">Riblji meni: <?php echo $reservation->menu_fish; ?></p>
+      <p id="povijest-vege"  style=" margin-top:5px;font-family:sans-serif; font-size:15px;color:#306a82;">Vegeterijanski meni: <?php echo $reservation->menu_veg; ?></p>
+      <p id="povijest-datum-rezervacije"  style=" margin-top:5px;font-family:sans-serif; font-size:15px;color:#306a82;">Datum rezervacije: <?php echo $reservation->date_buy; ?></p>
+      <p id="povijest-datum-putovanja"  style=" margin-top:5px;font-family:sans-serif; font-size:15px;color:#306a82;">Datum putovanja: <?php echo $reservation->date_trip; ?></p>
+      <p id="povijest-kod"  style=" margin-top:5px;font-family:sans-serif; font-size:15px;color:#306a82;">Rezervacijski kod: <?php echo $reservation->code; ?></p>
+      <?php
+        if($reservation->comment)
+        {
+          ?>
+          <p id="povijest-komentar"  style=" margin-top:5px;font-family:sans-serif; font-size:15px;color:#306a82;"> Komentar: <?php echo $reservation->comment; ?></p>
+          <p id="povijest-ocijena"  style=" margin-top:5px;font-family:sans-serif; font-size:15px;color:#306a82;">Ocijena: <?php echo $reservation->rating; ?></p>
+          <?php
+        }
+        else if(!$owner)
+        {
+          ?>
+          <form method="post" action="index.php?rt=user/comment" >
+          <p  style=" margin-top:10px;font-family:sans-serif; font-size:20px;color:#306a82;">Želite li komentirati svoje putovanje:</p>
+          
+          <br>
+          <p  style=" margin-top:5px;font-family:sans-serif; font-size:15px;color:#306a82;">Ocjena:</p>
+              <select name="rank">
+                  <option disabled selected>Please select...</option>
+                  <option value=1>1</option>
+                  <option value=2>2</option>
+                  <option value=3>3</option>
+                  <option value=4>4</option>
+                  <option value=5 selected>5</option>
+              </select>
+          <br>
+          <p  style=" margin-top:5px;font-family:sans-serif; font-size:15px;color:#306a82;">Komentar:</p>
+          <input type="text" name="comment" />
+          <button type="submit" name="id" value= <?php echo $reservation->id; ?> >Pošalji</button>
+        </form>
+        <?php
+        }
+      ?>
+              
 </div>
-
-<?php require_once __SITE_PATH . '/view/_footer.php'; ?>

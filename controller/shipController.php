@@ -133,6 +133,8 @@ class ShipController extends BaseController
                     $this->registry->template->message ="Vaš izlet je registriran! Kod za izlet je: " . $reservation->code;
                     $this->registry->template->show('reservation_make');
             }
+            else
+                $this->registry->template->show('reservation_make');
 
         }
         else{
@@ -219,7 +221,6 @@ class ShipController extends BaseController
                     $this->registry->template->show('reservation_make');
             }
             else{
-                
                 $this->registry->template->show('reservation_make');
             }
             

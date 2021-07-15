@@ -7,29 +7,49 @@ class UserController extends BaseController
 		if(!isset($_SESSION['user']))
 			header('location: index.php?rt=authentication');
 		
-		//require_once __DIR__ . '/../view/user_products.php';
+		else
+		header('location: index.php?rt=user/reservations');
 	}
 
 	public function reservations()
 	{
-		$this->registry->template->title = 'Moje rezervacije';
 		$user =unserialize($_SESSION['user']);
+		$this->registry->template->type = $user->type;
+		$this->registry->template->owner = false;
 		$reservationList = $user->reservations();
 		foreach($reservationList as $reservation){
-			$this->registry->template->reservation = $reservation;
-			$this->registry->template->show('reservation');
+			$reservation->name = Ship::find($reservation->id_ship)->name;
 		}
+		$this->registry->template->reservationList = $reservationList;
+		$this->registry->template->show('personal');
 	}
 
-	public function ships()//TODO
+	public function ships()
 	{
-		$this->registry->template->title = 'Moje rezervacije';
+		$this->registry->template->owner = true;
 		$user =unserialize($_SESSION['user']);
+		$this->registry->template->type = $user->type;
 		$shipList = $user->ships();
+		$reservationList=[];
 		foreach($shipList as $ship){
-			$this->registry->template->reservation = $ship;
-			$this->registry->template->show('reservation');
+			$reservationList = array_merge($reservationList,Reservation::where('id_ship',$ship->id));
 		}
+		foreach($reservationList as $reservation){
+			$reservation->name = Ship::find($reservation->id_ship)->name;
+		}
+		$this->registry->template->reservationList = $reservationList;
+		$this->registry->template->show('personal');
+	}
+
+	public function comment()
+	{
+		if(isset($_POST['id']) && isset($_POST['comment']) && isset($_POST['rank'])){
+			$reservation = Reservation::find($_POST['id']);
+			$reservation->comment = $_POST['comment'];
+			$reservation->rsnk = $_POST['rank'];
+			$reservation->save();
+		}
+		header('location: index.php?rt=user/reservations');
 	}
 }; 
 

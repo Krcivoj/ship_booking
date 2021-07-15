@@ -1008,10 +1008,11 @@ label {
 .rezultat{
   float:left;
   margin:10px;
-  height: 200px;
+  /*height: 200px;*/
   width: 23%;
   margin-left: 20px;
   margin-right: 20px;
+  padding-bottom: 10px;
   background-color:  rgb(245, 221, 176, 0.8);
   border-radius: 10px;
   text-align: center;
