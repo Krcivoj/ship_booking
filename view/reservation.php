@@ -1,5 +1,5 @@
 <div class="rezultat">
-      <a href="#" style="text-decoration: none;"><img class="brodic" src = ../ship_booking/assets/brod.png></img></a>       
+      <a href="index.php?rt=ship/show_page&name=<?php echo $reservation->name; ?>" style="text-decoration: none;"><img class="brodic" src = ../ship_booking/assets/brod.png></img></a>       
       <p id="povijest-ime" style=" font-family:'Rock Salt'; font-weight: bold; font-size:20px;color:black;"><?php echo $reservation->name; ?></p>
       <p id="povijest-karte-odrasli"  style=" margin-top:5px;font-family:sans-serif; font-size:15px;color:#306a82;">Odrasli: <?php echo $reservation->ticket_adults; ?></p>
       <p id="povijest-karte-djeca"  style=" margin-top:5px;font-family:sans-serif; font-size:15px;color:#306a82;">Djeca: <?php echo $reservation->ticket_kids; ?></p>
