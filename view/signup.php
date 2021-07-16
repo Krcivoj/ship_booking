@@ -25,7 +25,7 @@
             <div class="container">
                 <div class="signup-content">
                     <div class="signup-form">
-                        <h2 class="form-title">Sign up</h2>
+                        <h2 class="form-title">Upis</h2>
                         <form method="post" action="index.php?rt=authentication/signup"  class="register-form" id="register-form">
                             <div class="form-group">
                                 <label id="ikona" style="color: black; margin:8px;" for="name">
@@ -53,6 +53,10 @@
                                 <label id="ikona" style="color: black; margin:8px;" for="re-pass"><i style="margin-right:10px" class="zmdi zmdi-lock-outline"></i></label>
                                 <input id="repeatPassword" type="password" name="repeatPassword" class="podaci" placeholder="Ponovite lozinku"/>
                             </div>
+                            <?php 
+                                if( $message !== '' )
+                                    echo '<p style="color:red; font-family: Garamond; font-size: 1.25em; margin-left: 20px; margin: 10px;">' . $message . '</p>';
+                            ?>
                             <div class="form-group form-button">
                                 <input id="btn" type="submit" name="gumb" class="button-submit" value="registriraj se"/>
                             </div>
@@ -61,10 +65,6 @@
                 </div>
             </div>
         </section>
-<?php 
-    //if( $message !== '' )
-    //    echo '<p style="color:red; font-family: Garamond; font-size: 10px>' . $message . '</p>';
-?>
 
 
 <script src="<?php echo __SITE_URL; ?>/js/signup.js" ></script>

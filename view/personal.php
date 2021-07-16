@@ -7,16 +7,11 @@
     echo '<li class="right"><a href="index.php?rt=user/reservations" class="button-submit">Moji izleti</a><a style="margin-left:10px;" href="index.php?rt=user/ships" class="button-submit">Rezervacije brodova</a></li>';
     //echo '<li class="right"><a href="index.php?rt=user/ships" class="button-submit">Rezervacije brodova</a></li>';
     echo '</ul>';
-    ?>
-    <div style="color:black; text-align:center; font-family: Garamond; font-size: 2em; font-weight: bold; margin-top:80px;">Sve rezervacije na Vašim brodovima:</div>
-    <?php
+
   }
-  else
-  {
-    ?>
-    <div style="color:black; text-align:center; font-family: Garamond; font-size: 2em; font-weight: bold; margin-top:80px;">Vaše rezervacije:</div>
-    <?php
-  }
+  
+    echo '<div style="color:black; text-align:center; font-family: Garamond; font-size: 2em; font-weight: bold; margin-top:80px;">'. $title .'</div>';
+    
   ?>
     <div class="popis">
     <?php

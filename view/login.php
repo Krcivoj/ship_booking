@@ -20,7 +20,7 @@
             <div class="container">
                 <div class="signin-content">
                     <div class="signin-form">
-                        <h2 class="form-title">Prijavi se</h2>
+                        <h2 class="form-title">Prijava</h2>
                         <form method="POST" class="register-form" id="login-form">
                             <div class="form-group">
                                 <label id="ikona" style="color: black; margin:8px;" for="your_name">
@@ -34,6 +34,10 @@
                                     <i style="margin-right:10px" class="zmdi zmdi-lock"></i></label>
                                 <input type="password" name="password" id="your_pass" class="podaci" placeholder="Lozinka"/>
                             </div>
+                            <?php 
+                                if( $message !== '' )
+                                    echo '<p style="color:red; font-family: Garamond; font-size: 1.25em; margin-left: 20px; margin: 10px;">' . $message . '</p>';
+                            ?>
                             <div class="form-group form-button">
                                 <input type="submit" name="gumb" value="prijavi se" id="signin" class="button-submit" />
                             </div>
@@ -42,8 +46,5 @@
                 </div>
             </div>
         </section>
-<?php 
-    if( $message !== '' )
-        echo '<p style="color:red; font-family: Garamond; font-size: 10px>' . $message . '</p>';
-?>
+
 <?php require_once __DIR__ . '/_footer.php'; ?>

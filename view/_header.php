@@ -27,7 +27,7 @@
 
             <?php
             if(!isset($_SESSION['user'])){
-                echo '<li class="right"><a href="index.php?rt=authentication/login" class="button">Prijavi se</a></li>';
+                echo '<li class="right"><a href="index.php?rt=authentication" class="button">Prijavi se</a></li>';
                 echo '<li class="right"><a href="index.php?rt=authentication/signup_index" class="button">Registriraj se</a></li>';
             }
             else{
