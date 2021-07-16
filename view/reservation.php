@@ -26,7 +26,7 @@
           
           <br>
           <p  style=" margin-top:5px;font-family:sans-serif; font-size:15px;color:#306a82;">Ocjena:</p>
-              <select name="rank">
+              <select name="rating">
                   <option disabled selected>Please select...</option>
                   <option value=1>1</option>
                   <option value=2>2</option>
