@@ -33,14 +33,16 @@ class AuthenticationController extends BaseController
         // Provjeri ispravnost emaila
         if( !isset($_POST['email']) || !filter_var( $_POST['email'], FILTER_VALIDATE_EMAIL) )
 	    {
-            $this->login_failed("Email is not valid!");
+            //$this->login_failed("Email adresa nije ispravna!");
+            $this->login_failed( 'Nesipravan email ili lozinka!' );
             return;
 	    }
 
 
         // Možda se ne šalje password; u njemu smije biti bilo što.
         if( !isset( $_POST["password"] ) ){
-            $this->login_failed("Password is empty!");
+            //$this->login_failed("Password is empty!");
+            $this->login_failed( 'Nesipravan email ili lozinka!' );
             return;
         }
 
@@ -49,7 +51,8 @@ class AuthenticationController extends BaseController
         if( $user === null )
         {
             // Taj user ne postoji, upit u bazu nije vratio ništa.
-            $this->login_failed( 'Ne postoji korisnik s tim imenom.' );
+            //$this->login_failed( 'Ne postoji korisnik s tim imenom.' );
+            $this->login_failed( 'Nesipravan email ili lozinka!' );
             return;
         }
         else
@@ -61,13 +64,14 @@ class AuthenticationController extends BaseController
             {
                 // Dobar je. Ulogiraj ga.
                 $_SESSION['tempUser'] = serialize($user);
-                header( 'Location: index.php?rt=authentication/registered' );  //PROMJENA
+                header( 'Location: index.php?rt=authentication/registered' );
                 return;
             }
             else
             {
                 // Nije dobar. Crtaj opet login formu s pripadnom porukom.
-                $this->login_failed( 'Postoji user, ali password nije dobar.' );
+                //$this->login_failed( 'Postoji user, ali password nije dobar.' );
+                $this->login_failed( 'Nesipravan email ili lozinka!' );
                 return;
             }
         }

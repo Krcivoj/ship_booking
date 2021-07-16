@@ -8,10 +8,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
-
-    <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
-    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
   </head>
   <body id="main">
     <nav style="background: url(../ship_booking/assets/rot.jpg);">
@@ -87,45 +83,14 @@
 
 </div>
 
-<h2>Ukoliko nas želite pronaći uživo, potražite nas uz pomoć približne lokacije!</h2>
-<div id="mapa" style=" width: 500px; height: 500px;"><p id="lat"><?php echo $ship->start_lat;?></p><p id="lon"><?php echo $ship->start_lon;?></p></div>
-
-<script>
-
-$( document ).ready( function() 
-{
-    
-        
-        var sir1 = $('#lat').html();
-        $('#lat').remove();
-        var sir = parseFloat(sir1); 
-        var duz1 = $('#lon').html();
-        $('#lon').remove();
-        var duz = parseFloat(duz1); 
-
-        var openLayerMap = new ol.Map(
-        {
-            target: 'mapa', // id elementa gdje će se nacrtati mapa
-            layers: // koje slojeve ćemo prikazati na mapi
-            [
-                // OpenStreetMap
-                new ol.layer.Tile( { source: new ol.source.OSM() } )
-            ],
-            view: new ol.View(
-            {
-                center: ol.proj.fromLonLat( [duz, sir] ), // zemljopisne koord. centra mape
-                zoom: 15
-            })
-    } );
-} );
-</script>
-
 <h1 id="komentari">REZENCIJE</h1>
 <h3 style="margin-left: 1em;">Pročitajte komentare i ocijene koje su gosti ostavili:</h3> 
 <ul>
     
     <?php 
         foreach($resList as $res){
+          if($res->comment || $res->rating)
+          {
             echo '<li>';
             if($res->rating){
                 echo '<font class="desc">Ocijena:<font style="color:red"> '.$res->rating;
@@ -134,6 +99,7 @@ $( document ).ready( function()
                 echo '</font>       Komentar: </font>'.$res->comment;
             }
             echo '</li>';
+          }
         }
     ?>
 </ul>
