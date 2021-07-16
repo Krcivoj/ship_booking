@@ -126,6 +126,7 @@ $( document ).ready( function()
     
     <?php 
         foreach($resList as $res){
+          if($res->comment || $res->rating){
             echo '<li>';
             if($res->rating){
                 echo '<font class="desc">Ocijena:<font style="color:red"> '.$res->rating;
@@ -134,6 +135,7 @@ $( document ).ready( function()
                 echo '</font>       Komentar: </font>'.$res->comment;
             }
             echo '</li>';
+          }
         }
     ?>
 </ul>
