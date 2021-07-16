@@ -53,7 +53,7 @@ function prikazi(){
     popis.html('');
     for(let i = 0; i < ships.length; i++){
         let brod = $('<div class="rezultat"></div>');
-        brod.append($('<a href="#" style="text-decoration: none;"><img class="brodic" src = "../ship_booking/assets/brod.png"></img></a>'));
+        brod.append($('<a href="index.php?rt=ship/show_page&name=' +ships[i].name +'" target="_blank" style="text-decoration: none;"><img class="brodic" src = "../ship_booking/assets/brod.png"></img></a>'));
         let ime =$('<p id="rezultat-ime" style=" font-family:'+'Rock Salt' + '; font-weight: bold; font-size:20px;color:black;"></p>');
         ime.html(ships[i].name);
         brod.append(ime);

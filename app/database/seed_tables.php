@@ -59,21 +59,21 @@ function seed_table_ships()
 
 		$st->execute( array('id_owner' => 2, 'name' => 'Marlena', 'capacity' => 50,
 							':price_kids' => 120, ':price_adults' => 220,
-							'locations' => 'Plavnik, Uvala Krušija, Ljubavna špilja, Zlatna plaža - Stara Baška',
+							'locations' => 'Plavnik,Uvala Krusija,Ljubavna spilja,Zlatna plaza',
 							'description' => 'Provedite svoj dan kupajući se na najljepšim lokacijama u okolini Krka. Lokacije koje je moguće posjetiti jedino brodom! Zabava na brodu i izvan njega zagarantirana.', 
 							'departure_time' => '11:00:00', 'arrival_time' => '17:00:00',
 							'start_place' => 'Punat', 'start_lat' => 45.0088199647, 
 							'start_lon' => 14.6240041706, 'animal_friendly' => 0 ) ); // mirko
-		$st->execute( array('id_owner' => 2, 'name' => 'Sea Dream', 'capacity' => 30,
+		$st->execute( array('id_owner' => 2, 'name' => 'SeaDream', 'capacity' => 30,
 							':price_kids' => 175, ':price_adults' => 290,
-							'locations' => 'Plavnik, Uvala Krušija, Mali Plavnik, Cres',
+							'locations' => 'Plavnik,Uvala Krusija,Mali Plavnik,Cres',
 							'description' => 'Pridružite nam se na avanturističkom putovanju na četiri otoka i istražite prekrasnu prirodu oko sebe. Povedite obitelj i prijatelje sa sobom i uronite u mediteranski duh. Plivajte i osunčajte svoj odmor i podignite svoj odmor na potpuno novu razinu!', 
 							'departure_time' => '09:30:00', 'arrival_time' => '18:00:00',
 							'start_place' => 'Krk', 'start_lat' => 45.02583, 
 							'start_lon' =>  14.57306,'animal_friendly' => 1 ) );
-		$st->execute( array('id_owner' => 2, 'name' => 'Nemo & Dora', 'capacity' => 40,
+		$st->execute( array('id_owner' => 2, 'name' => 'Nemo', 'capacity' => 40,
 							':price_kids' => 150, ':price_adults' =>300,
-							'locations' => 'Plavnik, Uvala Krušija, Ljubavna špilja, Otok Sveti Grgur',
+							'locations' => 'Plavnik,Uvala Krusija,Ljubavna spilja,Otok Sveti Grgur',
 							'description' => 'Da Vaš odmor bude potpun, nudimo Vam jedinstveno iskustvo tradicionalnog ulova ribe uz obilazak poznatih lokacija. Ispraćeni zvukovima galeba krenut ćemo ploviti
 							plavetnilom Kvarnerića, gledajući prekrasne krajolike naše obale. Uz riblje zagriske, upoznat ćete ulov ribe kako to rade krčki ribari - povlačnom mrežom. Nakon ulova i prebiranja ribe,
 							autohtonom ćemo kuhinjom zadovoljiti Vaša nepca ribom koju ste upravo sami ulovili. Kako bi avantura bila potpuna, ne propušta se ni kupanje u životopisnim kvarnerskim uvalama.', 
@@ -82,7 +82,7 @@ function seed_table_ships()
 							'start_lon' =>  14.57306, 'animal_friendly' =>1 ) );
 		$st->execute( array('id_owner' => 3, 'name' => 'Veglia', 'capacity' => 80,
 							':price_kids' => 250, ':price_adults' => 420,
-							'locations' => 'Otok Sveti Grgur, Goli otok, Rajska plaža - Rab',
+							'locations' => 'Otok Sveti Grgur,Goli otok,Rajska plaza,Rab',
 							'description' => 'Nudimo jedinstveni izlet, s potpuno drugačijom rutom od drugih izleta. Vodimo Vas u raj, na poznatu Rajsku plažu na otoku Rabu.
 							No, prije ćemo pristati na predivnom tihom otočiću Sv. Grgur i zloglasni Goli otok. Budite drugačiji i pridružite nam se na putovanju!', 
 							'departure_time' => '9:00:00', 'arrival_time' => '18:00:00',
@@ -117,7 +117,7 @@ function seed_table_reservations()
 							'menu_meat' => 4, 'menu_fish' => 0, 'menu_veg' => 0,
 							'animals' => 0, 'rating' => 5, 'comment' => 'Very good experience. Try it yourself! Fun, fun, fun!'
 		));
-		$st->execute( array('id_buyer' => 2, 'id_ship' => 2, 'date_buy' => '2020-07-01', 'date_trip' => '2020-07-02',
+		$st->execute( array('id_buyer' => 4, 'id_ship' => 2, 'date_buy' => '2020-07-01', 'date_trip' => '2020-07-02',
 							'ticket_baby' => 2,'ticket_kids' => 4, 'ticket_adults' => 5, 'code' => 'jcricnfbeo92fzw5snc',
 							'menu_meat' => 4, 'menu_fish' => 4, 'menu_veg' => 1,
 							'animals' => 2, 'rating' => 4, 'comment' => 'Expected more. Little bit boring and monotonous. But, service, safety, food great. '
@@ -132,12 +132,12 @@ function seed_table_reservations()
 							'menu_meat' => 0, 'menu_fish' => 8, 'menu_veg' => 0,
 							'animals' => 0, 'rating' => 5, 'comment' => 'Totally new experience, interesting and fun. Food is great and fresh!'
 		));
-		$st->execute( array('id_buyer' => 3, 'id_ship' => 3, 'date_buy' => '2021-6-10', 'date_trip' => '2021-07-01',
+		$st->execute( array('id_buyer' => 5, 'id_ship' => 3, 'date_buy' => '2021-6-10', 'date_trip' => '2021-07-01',
 							'ticket_baby' => 0,'ticket_kids' => 0, 'ticket_adults' => 7, 'code' => 'a75jfbeo92fz7hgtr4f5',
 							'menu_meat' => 0, 'menu_fish' => 7, 'menu_veg' => 0,
 							'animals' => 0, 'rating' => null, 'comment' => null
 		));
-		$st->execute( array('id_buyer' => 2, 'id_ship' => 4, 'date_buy' => '2021-06-01', 'date_trip' => '2021-07-02',
+		$st->execute( array('id_buyer' => 4, 'id_ship' => 4, 'date_buy' => '2021-06-01', 'date_trip' => '2021-07-02',
 							'ticket_baby' => 1,'ticket_kids' => 2, 'ticket_adults' => 2, 'code' => '4a75jfbelkjhgfdsncw',
 							'menu_meat' => 1, 'menu_fish' => 3, 'menu_veg' => 0,
 							'animals' => 0, 'rating' => null, 'comment' => null

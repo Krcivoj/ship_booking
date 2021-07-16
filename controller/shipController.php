@@ -227,37 +227,13 @@ class ShipController extends BaseController
         }
     }
 
-    public function reservation_validate(){
-        //postavljene su sve vrijednosti
-        if(isset($_POST['ime']) && isset($_POST['prezime']) && isset($_POST['mail']) && isset($_POST['datum'])
-             && isset($_POST['adults']) && isset($_POST['kids']) && isset($_POST['babies'])
-             && isset($_POST['meat']) && isset($_POST['fish']) && isset($_POST['vege'])){
-                echo $_POST['ime'];
-                echo $_POST['prezime'];
-                echo $_POST['mail'];
-                echo $_POST['datum'];
-
-/*
-                if($_POST['email'] === $user->email){
-                    $reservation = $this->makeReservationPost( $user->id);
-                    $reservation->save();
-                }
-                else{
-                    $user = new User();
-                    $user->name = $_POST['name'];
-                    $user->surname = $_POST['surname'];
-                    $user->email = $_POST['email'];
-                    $user->has_registered = 0;
-                    $user->type = "buyer";
-                    $user->save();
-
-                    $user=User::where('email', $user->email)[0];
-                    $reservation = $this->makeReservationPost( $user->id);
-                    $reservation->save();
-                }
-            */
-        }
-
+    public function show_page(){
+        $ship = new Ship();
+        $ship = Ship::whereOne('name', $_GET['name']);
+        $this->registry->template->ship = $ship;
+        $this->registry->template->locations = explode("," , $ship->locations);
+        $this->registry->template->resList = Reservation::where('id_ship', $ship->id);
+        $this->registry->template->show('boat_page');
     }
 }; 
 
