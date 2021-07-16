@@ -165,13 +165,9 @@ foreach($locations as $loc_name){
 ?>
 </div>
 
+<div id='chart' name=<?php echo $ship->name;?>></div>
 
-
-
-
-
-
-
+<script src="<?php echo __SITE_URL; ?>/js/chart.js" ></script>
 
   </body>
 

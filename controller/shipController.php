@@ -235,6 +235,100 @@ class ShipController extends BaseController
         $this->registry->template->resList = Reservation::where('id_ship', $ship->id);
         $this->registry->template->show('boat_page');
     }
+
+    public function attendance(){
+        $ship = Ship::whereOne('name', $_GET['name']);
+        $tablica=[];
+        $red= [];
+        $theDate = Date('Y-m-d');
+        $date = new DateTime($theDate);
+        for( $i = 0; $i<7 ; $i++)
+        {
+            $date->modify('-1 day');
+            try
+            {
+                $db = DB::getConnection();
+                $st = $db->prepare( 'SELECT SUM(ticket_adults) AS r1, SUM(ticket_kids) AS r2, SUM(ticket_baby) AS r3 
+                                        FROM project_reservations WHERE date_trip = :column1 AND id_ship=:column2');
+                $st->execute( array( 'column1' => $date->format('Y-m-d'), 'column2' => $ship->id ) );
+            }
+            catch( PDOException $e ) { exit( 'PDO (where) error ' . $e->getMessage() ); }
+
+            $row = $st->fetch();
+            $ukupno= (int)$row['r1'] +(int)$row['r2'] +(int)$row['r3'] ;
+            $red['odrasli']=(int)$row['r1'];
+            $red['djeca']=(int)$row['r2'];
+            $red['bebe']=(int)$row['r3'];
+            $red['ukupno']=$ukupno;
+            $tablica[]=$red;
+        }
+
+        $date = new DateTime($theDate);
+        $data = [];
+        $dataEl = [];
+        $points = [];
+        for($i=0; $i<count($tablica); $i++){
+            $date->modify('-1 day');
+            $point = [];
+            $point['label'] = $date->format('Y-m-d');
+            $point['y'] = $tablica[$i]['odrasli'];
+            $points[]= $point;
+        }
+        $dataEl['type']="column";
+        $dataEl['name']="Odrasli";
+        $dataEl['dataPoints']=$points;
+        $data[]= $dataEl;
+
+        $date = new DateTime($theDate);
+        $dataEl = [];
+        $points = [];
+        for($i=0; $i<count($tablica); $i++){
+            $date->modify('-1 day');
+            $point = [];
+            $point['label'] = $date->format('Y-m-d');
+            $point['y'] = $tablica[$i]['djeca'];
+            $points[]= $point;
+        }
+        $dataEl['type']="column";
+        $dataEl['name']="Djeca";
+        $dataEl['dataPoints']=$points;
+        $data[]= $dataEl;
+
+        $date = new DateTime($theDate);
+        $dataEl = [];
+        $points = [];
+        for($i=0; $i<count($tablica); $i++){
+            $date->modify('-1 day');
+            $point = [];
+            $point['label'] = $date->format('Y-m-d');
+            $point['y'] = $tablica[$i]['bebe'];
+            $points[]= $point;
+        }
+        $dataEl['type']="column";
+        $dataEl['name']="Bebe";
+        $dataEl['dataPoints']=$points;
+        $data[]= $dataEl;
+
+        $date = new DateTime($theDate);
+        $dataEl = [];
+        $points = [];
+        for($i=0; $i<count($tablica); $i++){
+            $date->modify('-1 day');
+            $point = [];
+            $point['label'] = $date->format('Y-m-d');
+            $point['y'] = $tablica[$i]['ukupno'];
+            $points[]= $point;
+        }
+        $dataEl['type']="column";
+        $dataEl['name']="Ukupno";
+        $dataEl['dataPoints']=$points;
+        $data[]= $dataEl;
+        
+        header( 'Content-type:application/json;charset=utf-8' );
+        echo json_encode($data);
+        flush();
+        exit( 0 );
+    }
 }; 
 
 ?>
