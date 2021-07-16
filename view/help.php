@@ -23,16 +23,16 @@
     <!--navigacija-->
     <div class="nav">
         <ul class="menu-bar">
-            <li class="left">UPUSTVA</li>
+            <li class="left">UPUTSTVA</li>
         </ul>
     </div>
 
     <div style="margin-left:20%;margin-right:20%">
     
-    <p style="background-color: rgba(256,256,256,0.7); margin-10px;padding:2em;color:black;border-radius:10px;">Ovdje možete pronaći najvažnije stvari koje trebate znati prilikom korištenja ove stranice. 
+    <p style="background-color: rgba(256,256,256,0.7); margin:10px;padding:2em;color:black;border-radius:10px;">Ovdje možete pronaći najvažnije stvari koje trebate znati prilikom korištenja ove stranice. 
     Također, tekst Vam može poslužiti kao pomoć ukoliko zapnete na nekom dijelu korištenja stranice. 
     </p>
-    <p style="background-color: rgba(256,256,256,0.7); margin-10px;padding:2em;color:black;border-radius:10px;">U gornjem djelu prozora nalazi se naslov, koji je ujedno i link. 
+    <p style="background-color: rgba(256,256,256,0.7); margin: 10px;padding:2em;color:black;border-radius:10px;">U gornjem djelu prozora nalazi se naslov, koji je ujedno i link. 
     Klikom na njega uvijek se vraćate na početnu stranicu. Nadalje, slijede gumbovi koji su vezani za "privilegirane" korisnike. Naime, korisnik se može ili ne mora učlaniti kako bi koristio naše stranice. 
     Registrirani i ulogirani korisnik će moći pogledati svoju povijest putovanja, ostavljati komentare, ali i promatrati svoje brodove i statistiku ako je vlasnik nekog od brodova. 
     Klikom na gumb registracija, potrebno je upisati ime i prezime, sastavljeno samo od slova engleske abecede. Email koji unosite mora biti ispravnog formata i aktivan, kako bi putem njega mogli potvrditi 
@@ -42,19 +42,19 @@
     zajedno s pripadnim informacijama o izletu. Također, ukoliko izlet još niste komentirali to možete učiniti i time se Vaš komentar i ocijena trajno spremaju i javno prikazuju na stranici broda koji ste
     komentirali. Stranicu broda možete vidjeti klikom na ikonicu brodića u ispisu izleta. Odjavljujete iz sustava klikom na gumb. 
     </p>
-    <p style="background-color: rgba(256,256,256,0.7); margin-10px;padding:2em;color:black;border-radius:10px;">Stranica osim prijave pruža mogućnost pretraživanja izleta koji će Vam najviše odgovarati. 
+    <p style="background-color: rgba(256,256,256,0.7); margin:10px;padding:2em;color:black;border-radius:10px;">Stranica osim prijave pruža mogućnost pretraživanja izleta koji će Vam najviše odgovarati. 
     Brodove najprije pretražujete ili po mjestu polaska ili po lokaciji. Nije moguće pretraživati po oboje, jer krenete li pisati u jedan od prozorčića, tekst u drugom će nestati. Klikom na enter pojavljuju
     se brodovi koji odgovaraju navedenom ulazu. Zatim, možete još pretraživati po cijeni karata i trajanju, kao i mogućnosti dovođenja ljubimaca na brod. Klikanjem po checkboxu za ljubimce oglasi se skrivaju ili otkrivaju, 
     dok za filtriranje po trajanju i cijeni karata je potrebno kliknuti filtriraj. Rezultatni izleti su dostupni u obliku imena broda, sažetih i glavnih informacija, ikonice broda koji je zapravo
     link na webstranicu broda, tj izleta, a za kraj gumb rezerviraj kojim se otvara forma za rezerviranje.
     </p>
 
-    <p style="background-color: rgba(256,256,256,0.7); margin-10px;padding:2em;color:black;border-radius:10px;">Forma za rezerviranje sadrži unos imena i prezimena, emaila i datuma polaska.
+    <p style="background-color: rgba(256,256,256,0.7); margin:10px;padding:2em;color:black;border-radius:10px;">Forma za rezerviranje sadrži unos imena i prezimena, emaila i datuma polaska.
     Važno je izabrati broj vrsta karata za izlet. Kako bi osoblju broda bilo lakše pripremiti obroke na vrijeme, molimo Vas da korektno ispunite unos broja menija. On će se provjeravati, a potrebno je da
     broj menija odgovara broju kupljenih karata. Nakon što je sve korektno uneseno, korisnik crvenim slovila dobiva kod koji pokazuje na brodu prilikom ulaska. 
     </p>
 
-    <p style="background-color: rgba(256,256,256,0.7); margin-10px;padding:2em;color:black;border-radius:10px;">Ostalo je nešto reći o samim webstranicama broda. Svaka webstranica vezana je uz svoj brod.
+    <p style="background-color: rgba(256,256,256,0.7); margin:10px;padding:2em;color:black;border-radius:10px;">Ostalo je nešto reći o samim webstranicama broda. Svaka webstranica vezana je uz svoj brod.
     Možete pronaći zanimljivosti o brodu, slike lokacija koje posjećuje, detaljan prikaz ponude i karte za lakše snalaženje. Također, klikom na gumb rezerviraj moguće je rezervirati izlet. 
     </p>
 
